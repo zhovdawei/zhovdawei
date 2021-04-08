@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Centos7下安装docker | 莫问今朝</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/images/index.jpg">
+    <link rel="manifest" href="/images/index.jpg">
+    <link rel="apple-touch-icon" href="/images/index.jpg">
+    <meta name="description" content="有道无术，术尚可求；有术无道，止于术。">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="expires" cotent="0">
+    <meta http-quiv="pragma" cotent="no-cache, must-revalidate">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.48c4d218.js" as="script"><link rel="preload" href="/assets/js/2.0662490d.js" as="script"><link rel="preload" href="/assets/js/35.245b955b.js" as="script"><link rel="prefetch" href="/assets/js/10.cf2cd822.js"><link rel="prefetch" href="/assets/js/100.ac615c1f.js"><link rel="prefetch" href="/assets/js/101.64dd1084.js"><link rel="prefetch" href="/assets/js/102.d2130633.js"><link rel="prefetch" href="/assets/js/103.279af191.js"><link rel="prefetch" href="/assets/js/104.7dabf384.js"><link rel="prefetch" href="/assets/js/105.7463f0f0.js"><link rel="prefetch" href="/assets/js/106.7f31ad7c.js"><link rel="prefetch" href="/assets/js/107.116435f7.js"><link rel="prefetch" href="/assets/js/108.027815b7.js"><link rel="prefetch" href="/assets/js/109.960cdbf9.js"><link rel="prefetch" href="/assets/js/11.76086253.js"><link rel="prefetch" href="/assets/js/110.02ec919a.js"><link rel="prefetch" href="/assets/js/111.847f8867.js"><link rel="prefetch" href="/assets/js/112.040aac12.js"><link rel="prefetch" href="/assets/js/113.705f2306.js"><link rel="prefetch" href="/assets/js/114.69874db3.js"><link rel="prefetch" href="/assets/js/115.f4d773d2.js"><link rel="prefetch" href="/assets/js/116.686258af.js"><link rel="prefetch" href="/assets/js/117.14312915.js"><link rel="prefetch" href="/assets/js/118.f98ddc13.js"><link rel="prefetch" href="/assets/js/119.d555a25e.js"><link rel="prefetch" href="/assets/js/12.0cc62a6a.js"><link rel="prefetch" href="/assets/js/120.e9f49185.js"><link rel="prefetch" href="/assets/js/121.0858f159.js"><link rel="prefetch" href="/assets/js/122.3b3953e8.js"><link rel="prefetch" href="/assets/js/123.473fe59c.js"><link rel="prefetch" href="/assets/js/124.959f3b8f.js"><link rel="prefetch" href="/assets/js/125.13453e2e.js"><link rel="prefetch" href="/assets/js/126.4f01d4bc.js"><link rel="prefetch" href="/assets/js/127.2c8f7195.js"><link rel="prefetch" href="/assets/js/128.3b103a8f.js"><link rel="prefetch" href="/assets/js/129.56040e37.js"><link rel="prefetch" href="/assets/js/13.d9b92926.js"><link rel="prefetch" href="/assets/js/130.bd773d45.js"><link rel="prefetch" href="/assets/js/131.3d96003b.js"><link rel="prefetch" href="/assets/js/132.79912bd9.js"><link rel="prefetch" href="/assets/js/133.b58f064a.js"><link rel="prefetch" href="/assets/js/134.cc7e9d95.js"><link rel="prefetch" href="/assets/js/135.b64b266e.js"><link rel="prefetch" href="/assets/js/14.9ec827b9.js"><link rel="prefetch" href="/assets/js/15.498937ef.js"><link rel="prefetch" href="/assets/js/16.4ad89f29.js"><link rel="prefetch" href="/assets/js/17.89a92049.js"><link rel="prefetch" href="/assets/js/18.e5c7b02d.js"><link rel="prefetch" href="/assets/js/19.76bf5702.js"><link rel="prefetch" href="/assets/js/20.2c9f96db.js"><link rel="prefetch" href="/assets/js/21.00dfd8c2.js"><link rel="prefetch" href="/assets/js/22.8d4be0a7.js"><link rel="prefetch" href="/assets/js/23.199c8947.js"><link rel="prefetch" href="/assets/js/24.85ed7517.js"><link rel="prefetch" href="/assets/js/25.26441413.js"><link rel="prefetch" href="/assets/js/26.dd979442.js"><link rel="prefetch" href="/assets/js/27.ba5cefbf.js"><link rel="prefetch" href="/assets/js/28.82cb4b25.js"><link rel="prefetch" href="/assets/js/29.2b015a7e.js"><link rel="prefetch" href="/assets/js/3.0ace9d76.js"><link rel="prefetch" href="/assets/js/30.33f7fc27.js"><link rel="prefetch" href="/assets/js/31.88eea1ba.js"><link rel="prefetch" href="/assets/js/32.90279369.js"><link rel="prefetch" href="/assets/js/33.4fed115b.js"><link rel="prefetch" href="/assets/js/34.7c9bbf5f.js"><link rel="prefetch" href="/assets/js/36.0e4a166e.js"><link rel="prefetch" href="/assets/js/37.3c70e4e8.js"><link rel="prefetch" href="/assets/js/38.ec0c3132.js"><link rel="prefetch" href="/assets/js/39.5f7670e7.js"><link rel="prefetch" href="/assets/js/4.d9efc253.js"><link rel="prefetch" href="/assets/js/40.58c8361f.js"><link rel="prefetch" href="/assets/js/41.b785cf22.js"><link rel="prefetch" href="/assets/js/42.57d70211.js"><link rel="prefetch" href="/assets/js/43.ed792435.js"><link rel="prefetch" href="/assets/js/44.5479864b.js"><link rel="prefetch" href="/assets/js/45.cb929f9a.js"><link rel="prefetch" href="/assets/js/46.2c159f35.js"><link rel="prefetch" href="/assets/js/47.464715f6.js"><link rel="prefetch" href="/assets/js/48.75e3115c.js"><link rel="prefetch" href="/assets/js/49.64a7d412.js"><link rel="prefetch" href="/assets/js/5.71c0c7dd.js"><link rel="prefetch" href="/assets/js/50.798deef8.js"><link rel="prefetch" href="/assets/js/51.8962cc70.js"><link rel="prefetch" href="/assets/js/52.34ddf52c.js"><link rel="prefetch" href="/assets/js/53.bf02df08.js"><link rel="prefetch" href="/assets/js/54.cac8aec6.js"><link rel="prefetch" href="/assets/js/55.369ac53d.js"><link rel="prefetch" href="/assets/js/56.da02b3bf.js"><link rel="prefetch" href="/assets/js/57.4e4f5f1a.js"><link rel="prefetch" href="/assets/js/58.645f15e2.js"><link rel="prefetch" href="/assets/js/59.8bdef6ee.js"><link rel="prefetch" href="/assets/js/6.c9f44ce5.js"><link rel="prefetch" href="/assets/js/60.b438bfeb.js"><link rel="prefetch" href="/assets/js/61.4a282871.js"><link rel="prefetch" href="/assets/js/62.043db6d0.js"><link rel="prefetch" href="/assets/js/63.28994cf0.js"><link rel="prefetch" href="/assets/js/64.096997b7.js"><link rel="prefetch" href="/assets/js/65.b2ad35ca.js"><link rel="prefetch" href="/assets/js/66.58ce4a03.js"><link rel="prefetch" href="/assets/js/67.c840a4ee.js"><link rel="prefetch" href="/assets/js/68.30b94cbb.js"><link rel="prefetch" href="/assets/js/69.468f4fcf.js"><link rel="prefetch" href="/assets/js/7.7949bb19.js"><link rel="prefetch" href="/assets/js/70.2cad9587.js"><link rel="prefetch" href="/assets/js/71.33d17aa9.js"><link rel="prefetch" href="/assets/js/72.ec045340.js"><link rel="prefetch" href="/assets/js/73.446a2056.js"><link rel="prefetch" href="/assets/js/74.d2c034b8.js"><link rel="prefetch" href="/assets/js/75.32f50d84.js"><link rel="prefetch" href="/assets/js/76.21dd22e7.js"><link rel="prefetch" href="/assets/js/77.7e76c713.js"><link rel="prefetch" href="/assets/js/78.fe5880c6.js"><link rel="prefetch" href="/assets/js/79.9ccec491.js"><link rel="prefetch" href="/assets/js/8.68f30423.js"><link rel="prefetch" href="/assets/js/80.edd6d109.js"><link rel="prefetch" href="/assets/js/81.97e57b40.js"><link rel="prefetch" href="/assets/js/82.6162a617.js"><link rel="prefetch" href="/assets/js/83.bfd482f8.js"><link rel="prefetch" href="/assets/js/84.84122ab5.js"><link rel="prefetch" href="/assets/js/85.2467fb7f.js"><link rel="prefetch" href="/assets/js/86.f8f74288.js"><link rel="prefetch" href="/assets/js/87.f619cbb1.js"><link rel="prefetch" href="/assets/js/88.8aafe5a0.js"><link rel="prefetch" href="/assets/js/89.67cd2762.js"><link rel="prefetch" href="/assets/js/9.56fc1daa.js"><link rel="prefetch" href="/assets/js/90.7801dfa2.js"><link rel="prefetch" href="/assets/js/91.bc03075e.js"><link rel="prefetch" href="/assets/js/92.cd7f11c7.js"><link rel="prefetch" href="/assets/js/93.27188503.js"><link rel="prefetch" href="/assets/js/94.0c4b4391.js"><link rel="prefetch" href="/assets/js/95.cd4d517b.js"><link rel="prefetch" href="/assets/js/96.725d56bd.js"><link rel="prefetch" href="/assets/js/97.01d10b42.js"><link rel="prefetch" href="/assets/js/98.3595be8f.js"><link rel="prefetch" href="/assets/js/99.42dfe524.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">莫问今朝</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/coding/devops/说明.html" class="sidebar-link">说明</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Docker入门系列</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/coding/devops/docker/学习心得.html" class="sidebar-link">学习心得</a></li><li><a href="/coding/devops/docker/Centos7下安装docker.html" class="active sidebar-link">Centos7下安装docker</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#安装步骤" class="sidebar-link">安装步骤</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_1-关闭防火墙" class="sidebar-link">1.关闭防火墙</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_2-关闭selinux" class="sidebar-link">2.关闭SELinux</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_3-安装所需的软件包" class="sidebar-link">3.安装所需的软件包</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_4-配置docker-ce的源" class="sidebar-link">4.配置docker-ce的源</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_5-安装docker-ce" class="sidebar-link">5.安装docker-ce</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_6-启动docker-并设置开机启动" class="sidebar-link">6.启动docker,并设置开机启动</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_7-运行hello-world" class="sidebar-link">7.运行hello-world</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/Centos7下安装docker.html#_8-运行一个nginx测试" class="sidebar-link">8.运行一个nginx测试</a></li></ul></li></ul></li><li><a href="/coding/devops/docker/镜像管理.html" class="sidebar-link">镜像管理</a></li><li><a href="/coding/devops/docker/容器管理.html" class="sidebar-link">容器管理</a></li><li><a href="/coding/devops/docker/docker数据卷管理.html" class="sidebar-link">docker数据卷管理</a></li><li><a href="/coding/devops/docker/搭建LNMP网站平台.html" class="sidebar-link">搭建LNMP网站平台</a></li><li><a href="/coding/devops/docker/网络管理.html" class="sidebar-link">网络管理</a></li><li><a href="/coding/devops/docker/Dockerfile介绍.html" class="sidebar-link">Dockerfile介绍</a></li><li><a href="/coding/devops/docker/私有镜像仓库Harbor.html" class="sidebar-link">私有镜像仓库Harbor</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Kubernetes入门系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Jenkins入门系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CI&amp;CD综合实践</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="centos7下安装docker"><a href="#centos7下安装docker" class="header-anchor">#</a> Centos7下安装docker</h1> <hr> <h2 id="安装步骤"><a href="#安装步骤" class="header-anchor">#</a> 安装步骤</h2> <h3 id="_1-关闭防火墙"><a href="#_1-关闭防火墙" class="header-anchor">#</a> 1.关闭防火墙</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 关闭防火墙
+[root@host106 ~]# systemctl stop firewalld
+# 禁止启动开启防火墙
+[root@host106 ~]# systemctl disable firewalld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="_2-关闭selinux"><a href="#_2-关闭selinux" class="header-anchor">#</a> 2.关闭SELinux</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host106 ~]# vi /etc/selinux/config
+######################################################
+# 修改selinux为disabled
+# SELINUX=disabled
+######################################################
+
+# 重启系统，验证关闭
+[root@host106 ~]# getenforce
+Disabled
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="_3-安装所需的软件包"><a href="#_3-安装所需的软件包" class="header-anchor">#</a> 3.安装所需的软件包</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host106 ~]# yum install -y yum-utils \
+                  device-mapper-persistent-data \
+                  lvm2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="_4-配置docker-ce的源"><a href="#_4-配置docker-ce的源" class="header-anchor">#</a> 4.配置docker-ce的源</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host106 ~]# yum-config-manager \
+                  --add-repo \
+                  https://download.docker.com/linux/centos/docker-ce.repo
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="_5-安装docker-ce"><a href="#_5-安装docker-ce" class="header-anchor">#</a> 5.安装docker-ce</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host106 ~]# yum install docker-ce -y
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_6-启动docker-并设置开机启动"><a href="#_6-启动docker-并设置开机启动" class="header-anchor">#</a> 6.启动docker,并设置开机启动</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host106 ~]# systemctl start docker
+[root@host106 ~]# systemctl enable docker
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="_7-运行hello-world"><a href="#_7-运行hello-world" class="header-anchor">#</a> 7.运行hello-world</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host106 ~]# docker run hello-world
+
+# 看看执行情况
+[root@host106 ~]# docker info
+#####################################
+# 已经运行过 docker run hello-world 就会出现如下情况
+Server:
+ Containers: 1
+  Running: 0
+  Paused: 0
+  Stopped: 1
+ Images: 1
+#####################################
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="_8-运行一个nginx测试"><a href="#_8-运行一个nginx测试" class="header-anchor">#</a> 8.运行一个nginx测试</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 运行完，不要ctrl+c，否则会关闭运行，这是一个前台运行
+[root@host106 ~]# docker run -it nginx
+
+# 复制会话，查看一下docker进程，可以看到ngnix已经在运行状态&quot;up&quot;
+[root@host106 ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+f60fbaf65446        nginx               &quot;nginx -g 'daemon of…&quot;   26 seconds ago      Up 24 seconds       80/tcp              happy_sammet
+
+# 查看nginx容器详情
+[root@host106 ~]# docker inspect f60fbaf65446 
+# 截取其中一段，容器的ip:172.17.0.2
+    &quot;Networks&quot;: {
+        &quot;bridge&quot;: {
+            &quot;IPAMConfig&quot;: null,
+            &quot;Links&quot;: null,
+            &quot;Aliases&quot;: null,
+            &quot;NetworkID&quot;: &quot;e9de9968f67aabc8f276bc57a58564306deb2c7ea6d8758ac9ad26cf150b23ab&quot;,
+            &quot;EndpointID&quot;: &quot;e60eb73c6bb0f711c5a9088a0ceeb990fb6b53abfb987210c8183a74e9dafe7b&quot;,
+            &quot;Gateway&quot;: &quot;172.17.0.1&quot;,
+            &quot;IPAddress&quot;: &quot;172.17.0.2&quot;,
+            &quot;IPPrefixLen&quot;: 16,
+            &quot;IPv6Gateway&quot;: &quot;&quot;,
+            &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+            &quot;GlobalIPv6PrefixLen&quot;: 0,
+            &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
+            &quot;DriverOpts&quot;: null
+        }
+    }
+
+# 访问nginx容器
+# 如下，访问nginx成功，它给了我们一个欢迎页面。
+[root@host106 ~]# curl 172.17.0.2
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+# 通过容器的ID(CONTAINER ID)进入容器中
+# 我们可以看到一个与当前主机一样的文件系统，但是它是单独隔离的出来的。
+# 但是在容器中很多命令是不支持的，它只提供一个简易的运行环境
+[root@host106 ~]# docker exec -it f60fbaf65446 bash
+root@f60fbaf65446:/# ^C
+root@f60fbaf65446:/# ls
+bin  boot  dev	etc  home  lib	lib64  media  mnt  opt	proc  root  run  sbin  srv  sys  tmp  usr  var
+root@f60fbaf65446:/# 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br></div></div><p><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener noreferrer">Docker官方文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">12/3/2019, 4:10:16 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/coding/devops/docker/学习心得.html" class="prev">
+        学习心得
+      </a></span> <span class="next"><a href="/coding/devops/docker/镜像管理.html">
+        镜像管理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.48c4d218.js" defer></script><script src="/assets/js/2.0662490d.js" defer></script><script src="/assets/js/35.245b955b.js" defer></script>
+  </body>
+</html>

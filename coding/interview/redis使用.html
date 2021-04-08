@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>redis使用 | 莫问今朝</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/images/index.jpg">
+    <link rel="manifest" href="/images/index.jpg">
+    <link rel="apple-touch-icon" href="/images/index.jpg">
+    <meta name="description" content="有道无术，术尚可求；有术无道，止于术。">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="expires" cotent="0">
+    <meta http-quiv="pragma" cotent="no-cache, must-revalidate">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.48c4d218.js" as="script"><link rel="preload" href="/assets/js/2.0662490d.js" as="script"><link rel="preload" href="/assets/js/70.2cad9587.js" as="script"><link rel="prefetch" href="/assets/js/10.cf2cd822.js"><link rel="prefetch" href="/assets/js/100.ac615c1f.js"><link rel="prefetch" href="/assets/js/101.64dd1084.js"><link rel="prefetch" href="/assets/js/102.d2130633.js"><link rel="prefetch" href="/assets/js/103.279af191.js"><link rel="prefetch" href="/assets/js/104.7dabf384.js"><link rel="prefetch" href="/assets/js/105.7463f0f0.js"><link rel="prefetch" href="/assets/js/106.7f31ad7c.js"><link rel="prefetch" href="/assets/js/107.116435f7.js"><link rel="prefetch" href="/assets/js/108.027815b7.js"><link rel="prefetch" href="/assets/js/109.960cdbf9.js"><link rel="prefetch" href="/assets/js/11.76086253.js"><link rel="prefetch" href="/assets/js/110.02ec919a.js"><link rel="prefetch" href="/assets/js/111.847f8867.js"><link rel="prefetch" href="/assets/js/112.040aac12.js"><link rel="prefetch" href="/assets/js/113.705f2306.js"><link rel="prefetch" href="/assets/js/114.69874db3.js"><link rel="prefetch" href="/assets/js/115.f4d773d2.js"><link rel="prefetch" href="/assets/js/116.686258af.js"><link rel="prefetch" href="/assets/js/117.14312915.js"><link rel="prefetch" href="/assets/js/118.f98ddc13.js"><link rel="prefetch" href="/assets/js/119.d555a25e.js"><link rel="prefetch" href="/assets/js/12.0cc62a6a.js"><link rel="prefetch" href="/assets/js/120.e9f49185.js"><link rel="prefetch" href="/assets/js/121.0858f159.js"><link rel="prefetch" href="/assets/js/122.3b3953e8.js"><link rel="prefetch" href="/assets/js/123.473fe59c.js"><link rel="prefetch" href="/assets/js/124.959f3b8f.js"><link rel="prefetch" href="/assets/js/125.13453e2e.js"><link rel="prefetch" href="/assets/js/126.4f01d4bc.js"><link rel="prefetch" href="/assets/js/127.2c8f7195.js"><link rel="prefetch" href="/assets/js/128.3b103a8f.js"><link rel="prefetch" href="/assets/js/129.56040e37.js"><link rel="prefetch" href="/assets/js/13.d9b92926.js"><link rel="prefetch" href="/assets/js/130.bd773d45.js"><link rel="prefetch" href="/assets/js/131.3d96003b.js"><link rel="prefetch" href="/assets/js/132.79912bd9.js"><link rel="prefetch" href="/assets/js/133.b58f064a.js"><link rel="prefetch" href="/assets/js/134.cc7e9d95.js"><link rel="prefetch" href="/assets/js/135.b64b266e.js"><link rel="prefetch" href="/assets/js/14.9ec827b9.js"><link rel="prefetch" href="/assets/js/15.498937ef.js"><link rel="prefetch" href="/assets/js/16.4ad89f29.js"><link rel="prefetch" href="/assets/js/17.89a92049.js"><link rel="prefetch" href="/assets/js/18.e5c7b02d.js"><link rel="prefetch" href="/assets/js/19.76bf5702.js"><link rel="prefetch" href="/assets/js/20.2c9f96db.js"><link rel="prefetch" href="/assets/js/21.00dfd8c2.js"><link rel="prefetch" href="/assets/js/22.8d4be0a7.js"><link rel="prefetch" href="/assets/js/23.199c8947.js"><link rel="prefetch" href="/assets/js/24.85ed7517.js"><link rel="prefetch" href="/assets/js/25.26441413.js"><link rel="prefetch" href="/assets/js/26.dd979442.js"><link rel="prefetch" href="/assets/js/27.ba5cefbf.js"><link rel="prefetch" href="/assets/js/28.82cb4b25.js"><link rel="prefetch" href="/assets/js/29.2b015a7e.js"><link rel="prefetch" href="/assets/js/3.0ace9d76.js"><link rel="prefetch" href="/assets/js/30.33f7fc27.js"><link rel="prefetch" href="/assets/js/31.88eea1ba.js"><link rel="prefetch" href="/assets/js/32.90279369.js"><link rel="prefetch" href="/assets/js/33.4fed115b.js"><link rel="prefetch" href="/assets/js/34.7c9bbf5f.js"><link rel="prefetch" href="/assets/js/35.245b955b.js"><link rel="prefetch" href="/assets/js/36.0e4a166e.js"><link rel="prefetch" href="/assets/js/37.3c70e4e8.js"><link rel="prefetch" href="/assets/js/38.ec0c3132.js"><link rel="prefetch" href="/assets/js/39.5f7670e7.js"><link rel="prefetch" href="/assets/js/4.d9efc253.js"><link rel="prefetch" href="/assets/js/40.58c8361f.js"><link rel="prefetch" href="/assets/js/41.b785cf22.js"><link rel="prefetch" href="/assets/js/42.57d70211.js"><link rel="prefetch" href="/assets/js/43.ed792435.js"><link rel="prefetch" href="/assets/js/44.5479864b.js"><link rel="prefetch" href="/assets/js/45.cb929f9a.js"><link rel="prefetch" href="/assets/js/46.2c159f35.js"><link rel="prefetch" href="/assets/js/47.464715f6.js"><link rel="prefetch" href="/assets/js/48.75e3115c.js"><link rel="prefetch" href="/assets/js/49.64a7d412.js"><link rel="prefetch" href="/assets/js/5.71c0c7dd.js"><link rel="prefetch" href="/assets/js/50.798deef8.js"><link rel="prefetch" href="/assets/js/51.8962cc70.js"><link rel="prefetch" href="/assets/js/52.34ddf52c.js"><link rel="prefetch" href="/assets/js/53.bf02df08.js"><link rel="prefetch" href="/assets/js/54.cac8aec6.js"><link rel="prefetch" href="/assets/js/55.369ac53d.js"><link rel="prefetch" href="/assets/js/56.da02b3bf.js"><link rel="prefetch" href="/assets/js/57.4e4f5f1a.js"><link rel="prefetch" href="/assets/js/58.645f15e2.js"><link rel="prefetch" href="/assets/js/59.8bdef6ee.js"><link rel="prefetch" href="/assets/js/6.c9f44ce5.js"><link rel="prefetch" href="/assets/js/60.b438bfeb.js"><link rel="prefetch" href="/assets/js/61.4a282871.js"><link rel="prefetch" href="/assets/js/62.043db6d0.js"><link rel="prefetch" href="/assets/js/63.28994cf0.js"><link rel="prefetch" href="/assets/js/64.096997b7.js"><link rel="prefetch" href="/assets/js/65.b2ad35ca.js"><link rel="prefetch" href="/assets/js/66.58ce4a03.js"><link rel="prefetch" href="/assets/js/67.c840a4ee.js"><link rel="prefetch" href="/assets/js/68.30b94cbb.js"><link rel="prefetch" href="/assets/js/69.468f4fcf.js"><link rel="prefetch" href="/assets/js/7.7949bb19.js"><link rel="prefetch" href="/assets/js/71.33d17aa9.js"><link rel="prefetch" href="/assets/js/72.ec045340.js"><link rel="prefetch" href="/assets/js/73.446a2056.js"><link rel="prefetch" href="/assets/js/74.d2c034b8.js"><link rel="prefetch" href="/assets/js/75.32f50d84.js"><link rel="prefetch" href="/assets/js/76.21dd22e7.js"><link rel="prefetch" href="/assets/js/77.7e76c713.js"><link rel="prefetch" href="/assets/js/78.fe5880c6.js"><link rel="prefetch" href="/assets/js/79.9ccec491.js"><link rel="prefetch" href="/assets/js/8.68f30423.js"><link rel="prefetch" href="/assets/js/80.edd6d109.js"><link rel="prefetch" href="/assets/js/81.97e57b40.js"><link rel="prefetch" href="/assets/js/82.6162a617.js"><link rel="prefetch" href="/assets/js/83.bfd482f8.js"><link rel="prefetch" href="/assets/js/84.84122ab5.js"><link rel="prefetch" href="/assets/js/85.2467fb7f.js"><link rel="prefetch" href="/assets/js/86.f8f74288.js"><link rel="prefetch" href="/assets/js/87.f619cbb1.js"><link rel="prefetch" href="/assets/js/88.8aafe5a0.js"><link rel="prefetch" href="/assets/js/89.67cd2762.js"><link rel="prefetch" href="/assets/js/9.56fc1daa.js"><link rel="prefetch" href="/assets/js/90.7801dfa2.js"><link rel="prefetch" href="/assets/js/91.bc03075e.js"><link rel="prefetch" href="/assets/js/92.cd7f11c7.js"><link rel="prefetch" href="/assets/js/93.27188503.js"><link rel="prefetch" href="/assets/js/94.0c4b4391.js"><link rel="prefetch" href="/assets/js/95.cd4d517b.js"><link rel="prefetch" href="/assets/js/96.725d56bd.js"><link rel="prefetch" href="/assets/js/97.01d10b42.js"><link rel="prefetch" href="/assets/js/98.3595be8f.js"><link rel="prefetch" href="/assets/js/99.42dfe524.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">莫问今朝</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/coding/interview/面试.html" class="sidebar-link">面试小抄</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>面试知识点</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/coding/interview/Java集合体系.html" class="sidebar-link">Java集合体系</a></li><li><a href="/coding/interview/Java线程体系.html" class="sidebar-link">Java线程体系</a></li><li><a href="/coding/interview/Java流体系.html" class="sidebar-link">Java流体系</a></li><li><a href="/coding/interview/Java网络开发.html" class="sidebar-link">Java网络开发</a></li><li><a href="/coding/interview/Java反射知识.html" class="sidebar-link">Java反射知识</a></li><li><a href="/coding/interview/Java虚拟机知识.html" class="sidebar-link">Java虚拟机知识</a></li><li><a href="/coding/interview/spring-bean.html" class="sidebar-link">spring-bean</a></li><li><a href="/coding/interview/spring-mvc.html" class="sidebar-link">spring-mvc</a></li><li><a href="/coding/interview/spring-boot.html" class="sidebar-link">spring-boot</a></li><li><a href="/coding/interview/mysql优化.html" class="sidebar-link">mysql优化</a></li><li><a href="/coding/interview/redis使用.html" class="active sidebar-link">redis使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#redis简介" class="sidebar-link">redis简介</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#什么是-redis" class="sidebar-link">什么是 Redis？</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#什么是-nosql" class="sidebar-link">什么是 NoSQL？</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#redis应用场景" class="sidebar-link">redis应用场景</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#redis数据结构" class="sidebar-link">redis数据结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#string" class="sidebar-link">String</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#hash" class="sidebar-link">Hash</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#list" class="sidebar-link">List</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#set" class="sidebar-link">Set</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#sortedset" class="sidebar-link">SortedSet</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#分布式锁" class="sidebar-link">分布式锁</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#获取锁" class="sidebar-link">获取锁</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#释放锁" class="sidebar-link">释放锁</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#使用" class="sidebar-link">使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#jedis" class="sidebar-link">jedis</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#过期策略" class="sidebar-link">过期策略</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#redis-内置缓存淘汰策略" class="sidebar-link">Redis 内置缓存淘汰策略</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#lru-原理" class="sidebar-link">LRU 原理</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#lru-实现" class="sidebar-link">LRU 实现</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#分析" class="sidebar-link">分析</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#缓存陷进问题" class="sidebar-link">缓存陷进问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#缓存穿透" class="sidebar-link">缓存穿透</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#缓存雪崩" class="sidebar-link">缓存雪崩</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#缓存击穿" class="sidebar-link">缓存击穿</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#cas" class="sidebar-link">CAS</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#_64" class="sidebar-link">64</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#持久化" class="sidebar-link">持久化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#rdb方式" class="sidebar-link">RDB方式</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#aof方式" class="sidebar-link">AOF方式</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#如何选择rdb-和-aof" class="sidebar-link">如何选择RDB 和 AOF</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#主从复制" class="sidebar-link">主从复制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#什么是主从复制" class="sidebar-link">什么是主从复制</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#主从配置" class="sidebar-link">主从配置</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#实现原理" class="sidebar-link">实现原理</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#sentinel-哨兵机制" class="sidebar-link">Sentinel 哨兵机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#简介" class="sidebar-link">简介</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#哨兵进程的作用" class="sidebar-link">哨兵进程的作用</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#案例演示" class="sidebar-link">案例演示</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#cluster集群" class="sidebar-link">Cluster集群</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#redis-cluster架构图" class="sidebar-link">redis-cluster架构图</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#redis-cluster-投票-容错" class="sidebar-link">redis-cluster 投票：容错</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#安装-ruby-环境" class="sidebar-link">安装 Ruby 环境</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#安装-redis-集群-rediscluster" class="sidebar-link">安装 Redis 集群（RedisCluster）</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#命令客户端连接集群" class="sidebar-link">命令客户端连接集群</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#查看集群的命令" class="sidebar-link">查看集群的命令</a></li><li class="sidebar-sub-header"><a href="/coding/interview/redis使用.html#维护节点" class="sidebar-link">维护节点</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="redis使用"><a href="#redis使用" class="header-anchor">#</a> redis使用</h1> <hr> <h2 id="redis简介"><a href="#redis简介" class="header-anchor">#</a> redis简介</h2> <h3 id="什么是-redis"><a href="#什么是-redis" class="header-anchor">#</a> 什么是 Redis？</h3> <ul><li>Redis 是用 C 语言开发的一个开源的高性能键值对（key-value） 内存数据库。</li> <li>它提供五种数据类型来存储值： 字符串类型、 散列类型、 列表类型、 集合类型、 有序
+集合类型</li> <li>它是一种 NoSQL 数据库。</li></ul> <h3 id="什么是-nosql"><a href="#什么是-nosql" class="header-anchor">#</a> 什么是 NoSQL？</h3> <ul><li>NoSQL，即 Not-Only SQL（不仅仅是 SQL），泛指非关系型的数据库。</li> <li>什么是关系型数据库？ 数据结构是一种有行有列的数据库</li> <li>NoSQL 数据库是为了解决高并发、高可用、高可扩展、大数据存储问题而产生的
+数据库解决方案。</li> <li>NoSQL 可以作为关系型数据库的良好补充，但是不能替代关系型数据库。</li></ul> <h3 id="redis应用场景"><a href="#redis应用场景" class="header-anchor">#</a> redis应用场景</h3> <ul><li>内存数据库（登录信息、购物车信息、 用户浏览记录等）</li> <li>缓存服务器（商品数据、 广告数据等等）。（最多使用）</li> <li>解决分布式集群架构中的 session 分离问题（session 共享）。</li> <li>任务队列。（秒杀、抢购、 12306 等等）</li> <li>支持发布订阅的消息模式</li> <li>应用排行榜。</li> <li>网站访问统计。</li> <li>数据过期处理（可以精确到毫秒）</li></ul> <h2 id="redis数据结构"><a href="#redis数据结构" class="header-anchor">#</a> redis数据结构</h2> <h3 id="string"><a href="#string" class="header-anchor">#</a> String</h3> <h3 id="hash"><a href="#hash" class="header-anchor">#</a> Hash</h3> <h3 id="list"><a href="#list" class="header-anchor">#</a> List</h3> <h3 id="set"><a href="#set" class="header-anchor">#</a> Set</h3> <h3 id="sortedset"><a href="#sortedset" class="header-anchor">#</a> SortedSet</h3> <h2 id="分布式锁"><a href="#分布式锁" class="header-anchor">#</a> 分布式锁</h2> <ul><li>互斥性： 在任意时刻，只有一个客户端能持有锁</li> <li>同一性： 加锁和解锁必须是同一个客户端，客户端自己不能把别人加的锁给解了。</li> <li>可重入性： 即使有一个客户端在持有锁的期间崩溃而没有主动解锁，也能保证后续其他客户端能加锁。</li></ul> <h3 id="获取锁"><a href="#获取锁" class="header-anchor">#</a> 获取锁</h3> <ul><li>SET KEY VALUE [EX seconds] [PX milliseconds] [NX|XX]
+<ul><li>EX seconds 设置指定的到期时间(单位s)</li> <li>PX milliseconds 设置指定的到期时间(单位ms)</li> <li>NX 仅在键不存在时设置键</li> <li>XX 仅在键已存在时设置键<br></li></ul></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>/**
+* 使用redis的set命令实现获取分布式锁
+* @param lockKey 可以就是锁
+* @param requestId 请求ID，保证同一性
+* @param expireTime 过期时间，避免死锁
+* @return
+*/
+public static boolean getLock(String lockKey,String requestId,int expireTime) {
+   //NX:保证互斥性
+   String result = jedis.set(lockKey, requestId, &quot;NX&quot;, &quot;EX&quot;, expireTime);
+   if(&quot;OK&quot;.equals(result)) {
+       return true;
+   }
+   return false;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li>SETNX (不推荐，不具有原子性)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static boolean getLock(String lockKey,String requestId,int expireTime) {
+    Long result = jedis.setnx(lockKey, requestId);
+    if(result == 1) {
+        jedis.expire(lockKey, expireTime);
+        return true;
+    }
+    return false;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="释放锁"><a href="#释放锁" class="header-anchor">#</a> 释放锁</h3> <ul><li>redis+lua (推荐)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static boolean releaseLock(String lockKey, String requestId) {
+    String script = &quot;if redis.call('get', KEYS[1]) == ARGV[1] then 
+                    return redis.call('del', KEYS[1]) else return 0 end&quot;;
+    Object result = jedis.eval(script, Collections.singletonList(lockKey),
+    Collections.singletonList(requestId));
+    if (result.equals(1L)) {
+        return true;
+    }
+    return false;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>del</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>/**
+* 释放分布式锁
+* @param lockKey
+* @param requestId
+*/
+public static void releaseLock(String lockKey,String requestId) {
+    if (requestId.equals(jedis.get(lockKey))) {
+        jedis.del(lockKey);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h2> <h3 id="jedis"><a href="#jedis" class="header-anchor">#</a> jedis</h3> <h2 id="过期策略"><a href="#过期策略" class="header-anchor">#</a> 过期策略</h2> <h3 id="redis-内置缓存淘汰策略"><a href="#redis-内置缓存淘汰策略" class="header-anchor">#</a> Redis 内置缓存淘汰策略</h3> <ul><li>最大缓存
+<ul><li>在 redis 中，允许用户设置最大使用内存大小 maxmemory，默认为 0，没有指定
+最大缓存，如果有新的数据添加，超过最大内存，则会使 redis 崩溃，所以一定要设置。</li> <li>redis 内存数据集大小上升到一定大小的时候，就会实行数据淘汰策略。</li></ul></li> <li>淘汰策略
+<ul><li>redis 淘汰策略配置： maxmemory-policy voltile-lru，支持热配置</li></ul></li> <li>redis 提供 6 种数据淘汰策略：
+<ul><li>voltile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近
+最少使用的数据淘汰</li> <li>volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要
+过期的数据淘汰</li> <li>volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任
+意选择数据淘汰</li> <li>allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰</li> <li>allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰</li> <li>no-enviction（驱逐）：禁止驱逐数据</li></ul></li></ul> <h3 id="lru-原理"><a href="#lru-原理" class="header-anchor">#</a> LRU 原理</h3> <p>LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数
+据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高” 。</p> <h3 id="lru-实现"><a href="#lru-实现" class="header-anchor">#</a> LRU 实现</h3> <p>最常见的实现是使用一个链表保存缓存数据，详细算法实现如下：
+<img src="/images/interview/redis-1.png" alt=""><br></p> <ol><li>新数据插入到链表头部；</li> <li>每当缓存命中（即缓存数据被访问），则将数据移到链表头部；</li> <li>当链表满的时候，将链表尾部的数据丢弃。
+在 Java 中可以使用 LinkHashMap 去实现 LRU。</li></ol> <h3 id="分析"><a href="#分析" class="header-anchor">#</a> 分析</h3> <ul><li>命中率
+<ul><li>当存在热点数据时， LRU 的效率很好，但偶发性的、周期性的批量操作会导致 LRU 命中
+率急剧下降，缓存污染情况比较严重。</li></ul></li> <li>复杂度】
+<ul><li>实现简单。</li></ul></li> <li>代价】
+<ul><li>命中时需要遍历链表，找到命中的数据块索引，然后需要将数据移到头部</li></ul></li></ul> <h2 id="缓存陷进问题"><a href="#缓存陷进问题" class="header-anchor">#</a> 缓存陷进问题</h2> <h3 id="缓存穿透"><a href="#缓存穿透" class="header-anchor">#</a> 缓存穿透</h3> <ul><li>什么叫缓存穿透？<br>
+一般的缓存系统，都是按照 key 去缓存查询，如果不存在对应的 value，就应该去后端系统
+查找（比如 DB）。如果 key 对应的 value 是一定不存在的，并且对该 key 并发请求量很大，
+就会对后端系统造成很大的压力。这就叫做缓存穿透。</li> <li>如何解决
+<ul><li>1：对查询结果为空的情况也进行缓存，缓存时间设置短一点，或者该 key 对应的数据 insert了之后清理缓存。</li> <li>2：对一定不存在的 key 进行过滤。可以把所有的可能存在的 key 放到一个大的 Bitmap 中，
+查询时通过该 bitmap 过滤。（布隆表达式）</li></ul></li></ul> <h3 id="缓存雪崩"><a href="#缓存雪崩" class="header-anchor">#</a> 缓存雪崩</h3> <ul><li>什么叫缓存雪崩？
+当缓存服务器重启或者大量缓存集中在某一个时间段失效，这样在失效的时候，也会给后端
+系统(比如 DB)带来很大压力。</li> <li>如何解决？
+<ul><li>1：在缓存失效后，通过加锁或者队列来控制读数据库写缓存的线程数量。比如对某个 key
+只允许一个线程查询数据和写缓存，其他线程等待。</li> <li>2：不同的 key，设置不同的过期时间，让缓存失效的时间点尽量均匀。</li> <li>3：做二级缓存， A1 为原始缓存， A2 为拷贝缓存， A1 失效时，可以访问 A2， A1 缓存失
+效时间设置为短期， A2 设置为长期（此点为补充）</li></ul></li></ul> <h3 id="缓存击穿"><a href="#缓存击穿" class="header-anchor">#</a> 缓存击穿</h3> <ul><li>什么叫缓存击穿？
+<ul><li>对于一些设置了过期时间的 key，如果这些 key 可能会在某些时间点被超高并发地访问，
+是一种非常“热点” 的数据。这个时候，需要考虑一个问题：缓存被“击穿”的问题，这个
+和缓存雪崩的区别在于这里针对某一 key 缓存，前者则是很多 key。</li> <li>缓存在某个时间点过期的时候，恰好在这个时间点对这个 Key 有大量的并发请求过来，这些请求发现缓存过期一般都会从后端 DB 加载数据并回设到缓存，这个时候大并发的请求
+可能会瞬间把后端 DB 压垮。</li></ul></li> <li>如何解决？
+使用 redis 的 setnx 互斥锁先进行判断，这样其他线程就处于等待状态，保证不会有大并
+发操作去操作数据库。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>if(redis.sexnx()==1){
+    //查询数据库
+    //加入线程
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="cas"><a href="#cas" class="header-anchor">#</a> CAS</h2> <h3 id="_64"><a href="#_64" class="header-anchor">#</a> 64</h3> <h2 id="持久化"><a href="#持久化" class="header-anchor">#</a> 持久化</h2> <h3 id="rdb方式"><a href="#rdb方式" class="header-anchor">#</a> RDB方式</h3> <h4 id="使用介绍"><a href="#使用介绍" class="header-anchor">#</a> 使用介绍</h4> <ul><li>RDB 是 Redis 默认采用的持久化方式。</li> <li>RDB 方式是通过快照（snapshotting）完成的，当符合一定条件时 Redis 会自动将内
+存中的数据进行快照并持久化到硬盘。</li> <li>Redis 会在指定的情况下触发快照
+<ul><li>符合自定义配置的快照规则</li> <li>执行 save 或者 bgsave 命令</li> <li>执行 flushall 命令</li> <li>执行主从复制操作</li></ul></li> <li>在 redis.conf 中设置自定义快照规则</li> <li>1.RDB持久化条件
+<ul><li>格式： save &lt;seconds&gt; &lt;changes&gt;</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>save 900 1 ： 表示 15 分钟（900 秒钟）内至少 1 个键被更改则进行快照。
+save 300 10 ： 表示 5 分钟（300 秒）内至少 10 个键被更改则进行快照。
+save 60 10000 ： 表示 1 分钟内至少 10000 个键被更改则进行快照。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div>可以配置多个条件（每行配置一个条件），每个条件之间是“或” 的关系。</li> <li>2.配置 dir 指定 rdb 快照文件的位置</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># Note that you must specify a directory here, not a file name.
+dir ./
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>3.配置 dbfilename 指定 rdb 快照文件的名称</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># The filename where to dump the DB
+dbfilename dump.rdb
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>特别说明：
+<ul><li>Redis 启动后会读取 RDB 快照文件，将数据从硬盘载入到内存。</li> <li>根据数据量大小与结构和服务器性能不同，这个时间也不同。通常将记录一千万个字
+符串类型键、大小为 1GB 的快照文件载入到内存中需要花费 20～30 秒钟。</li></ul></li></ul> <h4 id="原理"><a href="#原理" class="header-anchor">#</a> 原理</h4> <ul><li>快照过程
+<ul><li><ol><li>redis 使用 fork 函数复制一份当前进程的副本(子进程)</li></ol></li> <li><ol start="2"><li>父进程继续接收并处理客户端发来的命令，而子进程开始
+将内存中的数据写入硬盘中的临时文件。</li></ol></li> <li><ol start="3"><li>当子进程写入完所有数据后会用该临时文件替换旧的 RDB
+文件，至此，一次快照操作完成。</li></ol></li></ul></li> <li>注意事项
+<ul><li><ol><li>redis 在进行快照的过程中不会修改 RDB 文件，只有快照
+结束后才会将旧的文件替换成新的，也就是说任何时候
+RDB 文件都是完整的。</li></ol></li> <li><ol start="2"><li>这就使得我们可以通过定时备份 RDB 文件来实现 redis 数
+据库的备份， RDB 文件是经过压缩的二进制文件，占用的
+空间会小于内存中的数据，更加利于传输。</li></ol></li></ul></li></ul> <h4 id="rdb优缺点"><a href="#rdb优缺点" class="header-anchor">#</a> RDB优缺点</h4> <ul><li>缺点<br>
+使用 RDB 方式实现持久化，一旦 Redis 异常退出，就会丢失最后一次快照
+以后更改的所有数据。这个时候我们就需要根据具体的应用场景，通过组合设置自动快
+照条件的方式来将可能发生的数据损失控制在能够接受范围。如果数据相对来说比较重
+要，希望将损失降到最小，则可以使用 AOF 方式进行持久化</li> <li>优点<br>
+RDB 可以最大化 Redis 的性能：父进程在保存 RDB 文件时唯一要做的就是
+fork 出一个子进程，然后这个子进程就会处理接下来的所有保存工作，父进程无序执
+行任何磁盘 I/O 操作。同时这个也是一个缺点，如果数据集比较大的时候， fork 可以
+能比较耗时，造成服务器在一段时间内停止处理客户端的请求；</li></ul> <h3 id="aof方式"><a href="#aof方式" class="header-anchor">#</a> AOF方式</h3> <h4 id="使用介绍-2"><a href="#使用介绍-2" class="header-anchor">#</a> 使用介绍</h4> <ul><li>默认情况下 Redis 没有开启 AOF（append only file）方式的持久化</li> <li>开启 AOF 持久化后每执行一条会更改 Redis 中的数据的命令， Redis 就会将该命令写入硬盘中的 AOF 文件，这一过程显然会降低 Redis 的性能，但大部分情况下这个影响
+是能够接受的，另外使用较快的硬盘可以提高 AOF 的性能。</li> <li>可以通过修改 redis.conf 配置文件中的 appendonly 参数开启<br>
+appendonly yes</li> <li>AOF 文件的保存位置和 RDB 文件的位置相同，都是通过 dir 参数设置的。<br>
+dir ./</li> <li>默认的文件名是 appendonly.aof，可以通过 appendfilename 参数修改：<br>
+appendfilename appendonly.aof</li></ul> <h4 id="aof重写原理"><a href="#aof重写原理" class="header-anchor">#</a> AOF重写原理</h4> <ul><li>Redis 可以在 AOF 文件体积变得过大时，自动地在后台对 AOF 进行重写</li> <li>重写后的新 AOF 文件包含了恢复当前数据集所需的最小命令集合。</li> <li>整个重写操作是绝对安全的，因为 Redis 在创建新 AOF 文件的过程中，会继续将命
+令追加到现有的 AOF 文件里面，即使重写过程中发生停机，现有的 AOF 文件也不会
+丢失。 而一旦新 AOF 文件创建完毕， Redis 就会从旧 AOF 文件切换到新 AOF 文
+件，并开始对新 AOF 文件进行追加操作。</li> <li>AOF 文件有序地保存了对数据库执行的所有写入操作， 这些写入操作以 Redis 协议
+的格式保存， 因此 AOF 文件的内容非常容易被人读懂， 对文件进行分析（parse）
+也很轻松</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># auto-aof-rewrite-percentage 100 
+表示当前 aof 文件大小超过上一次 aof 文件大小的百分之多少的时候会进行重写。
+如果之前没有重写过，以启动时 aof 文件大小为准
+
+# auto-aof-rewrite-min-size 64mb 
+限制允许重写最小 aof 文件大小，也就是文件大小小于 64mb 的时候，不需要进行优化
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h4 id="同步磁盘"><a href="#同步磁盘" class="header-anchor">#</a> 同步磁盘</h4> <p>Redis 每次更改数据的时候， aof 机制都会将命令记录到 aof 文件，但是实际上由于操作
+系统的缓存机制， 数据并没有实时写入到硬盘，而是进入硬盘缓存。 再通过硬盘缓存机制去
+刷新到保存到文件</p> <ul><li><p>参数说明：</p> <ul><li>appendfsync always 每次执行写入都会进行同步 ， 这个是最安全但是是效率比较
+低的方式</li> <li>appendfsync everysec 每一秒执行</li> <li>appendfsync no 不主动进行同步操作，由操作系统去执行，这个是最快但是最不安
+全的方式</li></ul></li> <li><p>AOF文件损坏以后如何修复<br>
+服务器可能在程序正在对 AOF 文件进行写入时停机， 如果停机造成了 AOF 文件出错
+（corrupt）， 那么 Redis 在重启时会拒绝载入这个 AOF 文件， 从而确保数据的一致性
+不会被破坏。</p></li> <li><p>当发生这种情况时， 可以用以下方法来修复出错的 AOF 文件：</p> <ul><li><ol><li>为现有的 AOF 文件创建一个备份。</li></ol></li> <li><ol start="2"><li>使用 Redis 附带的 redis-check-aof 程序，对原来的 AOF 文件进行修复。</li></ol></li> <li>redis-check-aof --fix readonly.aof</li> <li><ol start="3"><li>重启 Redis 服务器，等待服务器载入修复后的 AOF 文件，并进行数据恢复。</li></ol></li></ul></li></ul> <h3 id="如何选择rdb-和-aof"><a href="#如何选择rdb-和-aof" class="header-anchor">#</a> 如何选择RDB 和 AOF</h3> <ul><li>一般来说,如果对数据的安全性要求非常高的话， 应该同时使用两种持久化功能。</li> <li>如果可以承受数分钟以内的数据丢失，那么可以只使用 RDB 持久化。</li> <li>有很多用户都只使用 AOF 持久化， 但并不推荐这种方式： 因为定时生成 RDB 快照
+（snapshot）非常便于进行数据库备份， 并且 RDB 恢复数据集的速度也要比 AOF
+恢复的速度要快 。</li> <li>两种持久化策略可以同时使用，也可以使用其中一种。如果同时使用的话， 那么 Redis
+重启时，会优先使用 AOF 文件来还原数据</li></ul> <h2 id="主从复制"><a href="#主从复制" class="header-anchor">#</a> 主从复制</h2> <h3 id="什么是主从复制"><a href="#什么是主从复制" class="header-anchor">#</a> 什么是主从复制</h3> <p>持久化保证了即使 redis 服务重启也不会丢失数据，因为 redis 服务重启后会将硬盘上
+持久化的数据恢复到内存中，但是当 redis 服务器的硬盘损坏了可能会导致数据丢失，不过
+通过 redis 的主从复制机制就可以避免这种单点故障，如下图：
+<img src="/images/interview/redis-2.png" alt=""><br>
+说明：</p> <ul><li>主 redis 中的数据有两个副本（replication）即从 redis1 和从 redis2，即使一台 redis
+服务器宕机其它两台 redis 服务也可以继续提供服务。</li> <li>主 redis 中的数据和从 redis 上的数据保持实时同步，当主 redis 写入数据时通过主从
+复制机制会复制到两个从 redis 服务上。</li> <li>只有一个主 redis，可以有多个从 redis。</li> <li>主从复制不会阻塞 master，在同步数据时， master 可以继续处理 client 请求</li> <li>一个 redis 可以即是主又是从，如下图：
+<img src="/images/interview/redis-3.png" alt=""><br></li></ul> <h3 id="主从配置"><a href="#主从配置" class="header-anchor">#</a> 主从配置</h3> <ul><li>主 redis 配置
+<ul><li>无需特殊配置。</li></ul></li> <li>从 redis 配置
+<ul><li>修改从服务器上的 redis.conf 文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># slaveof &lt;masterip&gt; &lt;masterport&gt;
+$ slaveof 192.168.101.3 6379
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></li></ul> <h3 id="实现原理"><a href="#实现原理" class="header-anchor">#</a> 实现原理</h3> <ul><li>Redis 的主从同步，分为全量同步和增量同步。</li> <li>只有从机第一次连接上主机是全量同步</li> <li>断线重连有可能触发全量同步也有可能是增量同步（master 判断 runid 是否一致）</li> <li>除此之外的情况都是增量同步</li></ul> <h4 id="全量同步"><a href="#全量同步" class="header-anchor">#</a> 全量同步</h4> <p><img src="/images/interview/redis-4.png" alt=""><br>
+Redis 的全量同步过程主要分三个阶段：</p> <ul><li>同步快照阶段： Master 创建并发送快照给 Slave,Slave 载入并解析快照。 Master 同时
+将此阶段所产生的新的写命令存储到缓冲区。</li> <li>同步写缓冲阶段： Master 向 Slave 同步存储在缓冲区的写操作命令。</li> <li>同步增量阶段： Master 向 Slave 同步写操作命令。</li></ul> <h4 id="增量同步"><a href="#增量同步" class="header-anchor">#</a> 增量同步</h4> <p><img src="/images/interview/redis-5.png" alt=""><br></p> <ul><li>Redis 增量同步主要指 Slave 完成初始化后开始正常工作时， Master 发生的写操作同步
+到 Slave 的过程。</li> <li>通常情况下， Master 每执行一个写命令就会向 Slave 发送相同的写命令，然后 Slave 接收并执行。</li></ul> <h2 id="sentinel-哨兵机制"><a href="#sentinel-哨兵机制" class="header-anchor">#</a> Sentinel 哨兵机制</h2> <p>Redis 主从复制的缺点：没有办法对 master 进行动态选举，需要使用 Sentinel 机制完成
+动态选举</p> <h3 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h3> <ul><li>Sentinel(哨兵)进程是用于监控 redis 集群中 Master 主服务器工作的状态</li> <li>在 Master 主服务器发生故障的时候，可以实现 Master 和 Slave 服务器的切换，保证系
+统的高可用（HA）</li> <li>其已经被集成在 redis2.6+的版本中，Redis 的哨兵模式到了 2.8 版本之后就稳定了下来。</li></ul> <h3 id="哨兵进程的作用"><a href="#哨兵进程的作用" class="header-anchor">#</a> 哨兵进程的作用</h3> <ul><li><ol><li>监控(Monitoring): 哨兵(sentinel) 会不断地检查你的 Master 和 Slave 是否运作正
+常。</li></ol></li> <li><ol start="2"><li>提醒(Notification)： 当被监控的某个 Redis 节点出现问题时, 哨兵(sentinel) 可以通
+过 API 向管理员或者其他应用程序发送通知。</li></ol></li> <li><ol start="3"><li>自动故障迁移(Automatic failover)：当一个 Master 不能正常工作时，哨兵(sentinel)
+会开始一次自动故障迁移操作。</li></ol> <ul><li>它会将失效 Master 的其中一个 Slave 升级为新的 Master, 并让失效 Master 的其他
+Slave 改为复制新的 Master；* 当客户端试图连接失效的 Master 时，集群也会向客户端返回新 Master 的地址，使
+得集群可以使用现在的 Master 替换失效 Master。</li> <li>Master 和 Slave 服务器切换后， Master 的 redis.conf、 Slave 的 redis.conf 和
+sentinel.conf 的配置文件的内容都会发生相应的改变，即， Master 主服务器的
+redis.conf 配置文件中会多一行 slaveof 的配置， sentinel.conf 的监控目标会随之调
+换。</li></ul></li></ul> <h4 id="哨兵进程的工作方式"><a href="#哨兵进程的工作方式" class="header-anchor">#</a> 哨兵进程的工作方式</h4> <ul><li>每个 Sentinel（哨兵）进程以每秒钟一次的频率向整个集群中的 Master 主服务器，
+Slave 从服务器以及其他 Sentinel（哨兵）进程发送一个 PING 命令。</li> <li>如果一个实例（instance）距离最后一次有效回复 PING 命令的时间超过 downafter-milliseconds 选项所指定的值， 则这个实例会被 Sentinel（哨兵）进程标记为
+主观下线（SDOWN）。</li> <li>如果一个 Master 主服务器被标记为主观下线（SDOWN），则正在监视这个 Master 主
+服务器的所有 Sentinel（哨兵） 进程要以每秒一次的频率确认 Master 主服务器的确
+进入了主观下线状态。</li> <li>当有足够数量的 Sentinel（哨兵） 进程（大于等于配置文件指定的值）在指定的时间
+范围内确认 Master 主服务器进入了主观下线状态（SDOWN）， 则 Master 主服务器
+会被标记为客观下线（ODOWN）。</li> <li>在一般情况下， 每个 Sentinel（哨兵）进程会以每 10 秒一次的频率向集群中的所有
+Master 主服务器、 Slave 从服务器发送 INFO 命令。</li> <li>当 Master 主服务器被 Sentinel （哨兵）进程标记为客观下线（ODOWN） 时， Sentinel（哨兵）进程向下线的 Master 主服务器的所有 Slave 从服务器发送 INFO 命令的频
+率会从 10 秒一次改为每秒一次。</li> <li>若没有足够数量的 Sentinel（哨兵）进程同意 Master 主服务器下线， Master 主服
+务器的客观下线状态就会被移除。若 Master 主服务器重新向 Sentinel（哨兵）进程
+发送 PING 命令返回有效回复， Master 主服务器的主观下线状态就会被移除。
+<img src="/images/interview/redis-6.png" alt=""><br></li></ul> <h3 id="案例演示"><a href="#案例演示" class="header-anchor">#</a> 案例演示</h3> <ul><li>修改从机的 sentinel.conf</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>#sentinel monitor &lt;master-name&gt; &lt;master ip&gt; &lt;master port&gt;
+&lt;quorum&gt;
+sentinel monitor mymaster 192.168.10.133 6379 1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>其他配置项说明</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># Example sentinel.conf
+# 哨兵 sentinel 实例运行的端口 默认 26379
+port 26379
+
+# 哨兵 sentinel 的工作目录dir /tmp
+# 哨兵 sentinel 监控的 redis 主节点的 ip port
+# master-name 可以自己命名的主节点名字 只能由字母 A-z、数字 0-9 、这三个字符&quot;.-_&quot;组成。
+# quorum 当这些 quorum 个数 sentinel 哨兵认为 master 主节点失联 那么这时 客观上认为主节点
+# 失联了
+# sentinel monitor &lt;master-name&gt; &lt;ip&gt; &lt;redis-port&gt; &lt;quorum&gt;
+sentinel monitor mymaster 127.0.0.1 6379 2
+
+# 当在 Redis 实例中开启了 requirepass foobared 授权密码 这样所有连接 Redis 实例的客户端都
+# 要提供密码
+# 设置哨兵 sentinel 连接主从的密码 注意必须为主从设置一样的验证密码
+# sentinel auth-pass &lt;master-name&gt; &lt;password&gt;
+sentinel auth-pass mymaster MySUPER--secret-0123passw0rd
+
+# 指定多少毫秒之后 主节点没有应答哨兵 sentinel 此时 哨兵主观上认为主节点下线 默认 30 秒
+# sentinel down-after-milliseconds &lt;master-name&gt; &lt;milliseconds&gt;
+sentinel down-after-milliseconds mymaster 30000
+# 这个配置项指定了在发生 failover 主备切换时最多可以有多少个 slave 同时对新的master进行同
+步，这个数字越小，完成 failover 所需的时间就越长，
+但是如果这个数字越大，就意味着越 多的 slave 因为 replication 而不可用。
+可以通过将这个值设为 1 来保证每次只有一个 slave 处于不能处理命令请求的状态。
+# sentinel parallel-syncs &lt;master-name&gt; &lt;numslaves&gt;
+sentinel parallel-syncs mymaster 1
+
+# 故障转移的超时时间 failover-timeout 可以用在以下这些方面：
+#1. 同一个 sentinel 对同一个 master 两次 failover 之间的间隔时间。
+#2. 当一个 slave 从一个错误的 master 那里同步数据开始计算时间。直到 slave 被纠正为向正确的
+master 那里同步数据时。
+#3.当想要取消一个正在进行的 failover 所需要的时间。
+#4.当进行 failover 时，配置所有 slaves 指向新的 master 所需的最大时间。不过，即使过了这个超
+时， slaves 依然会被正确配置为指向 master，但是就不按 parallel-syncs 所配置的规则来了
+# 默认三分钟
+# sentinel failover-timeout &lt;master-name&gt; &lt;milliseconds&gt;
+sentinel failover-timeout mymaster 180000
+
+# SCRIPTS EXECUTION
+#配置事件发生时所需要执行的脚本，可以通过脚本来通知管理员，例如当系统运行不正常时发邮件通知相关人员。
+#对于脚本的运行结果有以下规则：
+#若脚本执行后返回 1，那么该脚本稍后将会被再次执行，重复次数目前默认为 10
+#若脚本执行后返回 2，或者比 2 更高的一个返回值，脚本将不会重复执行。
+#如果脚本在执行过程中由于收到系统中断信号被终止了，则同返回值为 1 时的行为相同。
+#一个脚本的最大执行时间为 60s，如果超过这个时间，脚本将会被一个 SIGKILL 信号终止，之后重新
+执行。
+#通知型脚本:当 sentinel 有任何警告级别的事件发生时（比如说 redis 实例的主观失效和客观失效等
+等），将会去调用这个脚本，
+这时这个脚本应该通过邮件， SMS 等方式去通知系统管理员关于系统不正常运行的信息。调用该脚本
+时，将传给脚本两个参数，
+一个是事件的类型，
+一个是事件的描述。
+如果 sentinel.conf 配置文件中配置了这个脚本路径，那么必须保证这个脚本存在于这个路径，并且是
+可执行的，否则 sentinel 无法正常启动成功。
+#通知脚本
+# sentinel notification-script &lt;master-name&gt; &lt;script-path&gt;
+sentinel notification-script mymaster /var/redis/notify.sh
+
+# 客户端重新配置主节点参数脚本
+# 当一个 master 由于 failover 而发生改变时，这个脚本将会被调用，通知相关的客户端关于 master
+地址已经发生改变的信息。
+# 以下参数将会在调用脚本时传给脚本:
+# &lt;master-name&gt; &lt;role&gt; &lt;state&gt; &lt;from-ip&gt; &lt;from-port&gt; &lt;to-ip&gt; &lt;to-port&gt;
+# 目前&lt;state&gt;总是“failover” ,
+# &lt;role&gt;是“leader”或者“observer”中的一个。
+# 参数 from-ip, from-port, to-ip, to-port 是用来和旧的 master 和新的 master(即旧的 slave)通
+信的
+# 这个脚本应该是通用的，能被多次调用，不是针对性的。
+# sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;
+sentinel client-reconfig-script mymaster /var/redis/reconfig.sh
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div><ul><li>通过 redis-sentinel 启动哨兵服务</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>./redis-sentinel sentinel.conf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="cluster集群"><a href="#cluster集群" class="header-anchor">#</a> Cluster集群</h2> <p>redis3.0 以后推出的 redis cluster 集群方案， redis cluster 集群保证了高可用、 高性能、
+高可扩展性。</p> <h3 id="redis-cluster架构图"><a href="#redis-cluster架构图" class="header-anchor">#</a> redis-cluster架构图</h3> <p><img src="/images/interview/redis-7.png" alt=""><br>
+架构细节:</p> <ul><li>(1)所有的 redis 节点彼此互联(PING-PONG 机制),内部使用二进制协议优化传输速度和带
+宽.</li> <li>(2)节点的 fail 是通过集群中超过半数的节点检测失效时才生效.</li> <li>(3)客户端与 redis 节点直连,不需要中间 proxy 层.客户端不需要连接集群所有节点,连接集
+群中任何一个可用节点即可</li> <li>(4)redis-cluster 把所有的物理节点映射到[0-16383]slot 上,cluster 负责维护
+node&lt;-&gt;slot&lt;-&gt;value
+Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value
+时， redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这
+样每个 key 都会对应一个编号在 0-16383 之间的哈希槽， redis 会根据节点数量大致均
+等的将哈希槽映射到不同的节点
+<img src="/images/interview/redis-8.png" alt=""><br></li></ul> <h3 id="redis-cluster-投票-容错"><a href="#redis-cluster-投票-容错" class="header-anchor">#</a> redis-cluster 投票：容错</h3> <p>最小节点数： 3 台</p> <ul><li>节点失效判断： 集群中所有 master 参与投票,如果半数以上 master 节点与其中一
+个 master 节点通信超过(cluster-node-timeout),认为该 master 节点挂掉.</li> <li>集群失效判断:什么时候整个集群不可用(cluster_state:fail)?
+<ul><li>如果集群任意 master 挂掉,且当前 master 没有 slave，则集群进入 fail 状态。也可以
+理解成集群的[0-16383]slot 映射不完全时进入 fail 状态。</li> <li>如果集群超过半数以上 master 挂掉，无论是否有 slave，集群进入 fail 状态。</li></ul></li></ul> <h3 id="安装-ruby-环境"><a href="#安装-ruby-环境" class="header-anchor">#</a> 安装 Ruby 环境</h3> <p>redis 集群需要使用集群管理脚本 redis-trib.rb，它的执行相应依赖 ruby 环境。</p> <ul><li>第一步：安装 ruby</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>yum install ruby
+yum install rubygems
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>第二步：安装 ruby 和 redis 的接口程序 redis-3.2.2.gem</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>gem install redis -V 3.2.2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>第三步： 复制 redis-3.2.9/src/redis-trib.rb 文件到/usr/local/redis 目录</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cp redis-3.2.9/src/redis-trib.rb /usr/local/redis-cluster/ -r
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="安装-redis-集群-rediscluster"><a href="#安装-redis-集群-rediscluster" class="header-anchor">#</a> 安装 Redis 集群（RedisCluster）</h3> <p>Redis 集群最少需要三台主服务器，三台从服务器。
+端口号分别为： 7001~7006</p> <ul><li>第一步：创建 7001 实例，并编辑 redis.conf 文件，修改 port 为 7001。
+注意：创建实例，即拷贝单机版安装时，生成的 bin 目录，为 7001 目录。</li> <li>第二步：修改 redis.conf 配置文件，打开 Cluster-enable yes</li> <li>第三步：复制 7001，创建 7002~7006 实例， 注意端口修改。</li> <li>第四步：启动所有的实例</li> <li>第五步：创建 Redis 集群</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>./redis-trib.rb create --replicas 1 192.168.10.133:7001
+192.168.10.133:7002 192.168.10.133:7003 192.168.10.133:7004
+192.168.10.133:7005 192.168.10.133:7006
+&gt;&gt;&gt; Creating cluster
+Connecting to node 192.168.10.133:7001: OK
+Connecting to node 192.168.10.133:7002: OK
+Connecting to node 192.168.10.133:7003: OK
+Connecting to node 192.168.10.133:7004: OK
+Connecting to node 192.168.10.133:7005: OK
+Connecting to node 192.168.10.133:7006: OK
+&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...
+Using 3 masters:
+192.168.10.133:7001
+192.168.10.133:7002
+192.168.10.133:7003
+
+Adding replica 192.168.10.133:7004 to 192.168.10.133:7001
+Adding replica 192.168.10.133:7005 to 192.168.10.133:7002
+Adding replica 192.168.10.133:7006 to 192.168.10.133:7003
+M: d8f6a0e3192c905f0aad411946f3ef9305350420 192.168.10.133:7001
+slots:0-5460 (5461 slots) master
+M: 7a12bc730ddc939c84a156f276c446c28acf798c 192.168.10.133:7002
+slots:5461-10922 (5462 slots) master
+M: 93f73d2424a796657948c660928b71edd3db881f 192.168.10.133:7003
+slots:10923-16383 (5461 slots) master
+S: f79802d3da6b58ef6f9f30c903db7b2f79664e61 192.168.10.133:7004
+replicates d8f6a0e3192c905f0aad411946f3ef9305350420
+S: 0bc78702413eb88eb6d7982833a6e040c6af05be 192.168.10.133:7005
+replicates 7a12bc730ddc939c84a156f276c446c28acf798c
+S: 4170a68ba6b7757e914056e2857bb84c5e10950e 192.168.10.133:7006
+replicates 93f73d2424a796657948c660928b71edd3db881f
+Can I set the above configuration? (type 'yes' to accept): yes
+&gt;&gt;&gt; Nodes configuration updated
+&gt;&gt;&gt; Assign a different config epoch to each node
+&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join....
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.10.133:7001)
+M: d8f6a0e3192c905f0aad411946f3ef9305350420 192.168.10.133:7001
+slots:0-5460 (5461 slots) master
+M: 7a12bc730ddc939c84a156f276c446c28acf798c 192.168.10.133:7002
+slots:5461-10922 (5462 slots) master
+M: 93f73d2424a796657948c660928b71edd3db881f 192.168.10.133:7003
+slots:10923-16383 (5461 slots) master
+M: f79802d3da6b58ef6f9f30c903db7b2f79664e61 192.168.10.133:7004
+slots: (0 slots) master
+replicates d8f6a0e3192c905f0aad411946f3ef9305350420
+M: 0bc78702413eb88eb6d7982833a6e040c6af05be 192.168.10.133:7005
+slots: (0 slots) master
+replicates 7a12bc730ddc939c84a156f276c446c28acf798c
+M: 4170a68ba6b7757e914056e2857bb84c5e10950e 192.168.10.133:7006
+slots: (0 slots) master
+replicates 93f73d2424a796657948c660928b71edd3db881f
+[OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+[OK] All 16384 slots covered.
+[root@localhost-0723 redis]#
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br></div></div><h3 id="命令客户端连接集群"><a href="#命令客户端连接集群" class="header-anchor">#</a> 命令客户端连接集群</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 命令： ./redis-cli –h 127.0.0.1 –p 7001 –c
+# 注意： -c 表示是以 redis 集群方式进行连接
+./redis-cli -p 7006 -c
+127.0.0.1:7006&gt; set key1 123
+-&gt; Redirected to slot [9189] located at 127.0.0.1:7002
+OK
+127.0.0.1:7002&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="查看集群的命令"><a href="#查看集群的命令" class="header-anchor">#</a> 查看集群的命令</h3> <ul><li>查看集群状态</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:7003&gt; cluster info
+cluster_state:ok
+cluster_slots_assigned:16384
+cluster_slots_ok:16384
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:3
+cluster_current_epoch:6
+cluster_my_epoch:3
+cluster_stats_messages_sent:926
+cluster_stats_messages_received:926
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>查看集群中的节点</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>127.0.0.1:7003&gt; cluster nodes
+7a12bc730ddc939c84a156f276c446c28acf798c 127.0.0.1:7002 master - 0 1443601739754 2
+connected 5461-10922
+93f73d2424a796657948c660928b71edd3db881f 127.0.0.1:7003 myself,master - 0 0 3
+connected 10923-16383
+d8f6a0e3192c905f0aad411946f3ef9305350420 127.0.0.1:7001 master - 0 1443601741267 1
+connected 0-5460
+4170a68ba6b7757e914056e2857bb84c5e10950e 127.0.0.1:7006 slave
+93f73d2424a796657948c660928b71edd3db881f 0 1443601739250 6 connected
+f79802d3da6b58ef6f9f30c903db7b2f79664e61 127.0.0.1:7004 slave
+d8f6a0e3192c905f0aad411946f3ef9305350420 0 1443601742277 4 connected
+0bc78702413eb88eb6d7982833a6e040c6af05be 127.0.0.1:7005 slave
+7a12bc730ddc939c84a156f276c446c28acf798c 0 1443601740259 5 connected
+127.0.0.1:7003&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="维护节点"><a href="#维护节点" class="header-anchor">#</a> 维护节点</h3> <p>集群创建成功后可以继续向集群中添加节点</p> <h4 id="添加主节点"><a href="#添加主节点" class="header-anchor">#</a> 添加主节点</h4> <ul><li>先创建 7007 节点</li> <li>添加 7007 结点作为新节点</li> <li>执行命令： ./redis-trib.rb add-node 127.0.0.1:7007 127.0.0.1:7001</li> <li>查看集群节点： cluster nodes</li></ul> <h4 id="hash槽重新分配-数据迁移"><a href="#hash槽重新分配-数据迁移" class="header-anchor">#</a> hash槽重新分配(数据迁移)</h4> <p>添加完主节点需要对主节点进行 hash 槽分配，这样该主节才可以存储数据。</p> <ul><li>查看集群中槽占用情况
+<ul><li>redis 集群有 16384 个槽，集群中的每个结点分配自已槽，通过查看集群结点可以看到槽占
+用情况</li></ul></li> <li>给刚添加的 7007 结点分配槽
+<ul><li>第一步：连接上集群（连接集群中任意一个可用结点都行）<div class="language- line-numbers-mode"><pre class="language-text"><code>./redis-trib.rb reshard 192.168.10.133:7001
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li>第二步：输入要分配的槽数量
+<img src="/images/interview/redis-9.png" alt=""><br></li> <li>第三步：输入接收槽的结点 id
+<img src="/images/interview/redis-10.png" alt=""><br></li> <li>第四步：输入源结点 id
+<img src="/images/interview/redis-11.png" alt=""><br></li> <li>第五步：输入 yes 开始移动槽到目标结点 id
+<img src="/images/interview/redis-12.png" alt=""><br></li></ul></li></ul> <h4 id="添加从节点"><a href="#添加从节点" class="header-anchor">#</a> 添加从节点</h4> <p>添加 7008 从结点，将 7008 作为 7007 的从结点</p> <ul><li>命令： ./redis-trib.rb add-node --slave --master-id 主节
+点 id 新节点的 ip 和端口 旧节点 ip 和端口（集群中任一节点
+都可以）<div class="language- line-numbers-mode"><pre class="language-text"><code>./redis-trib.rb add-node --slave --master-id
+35da64607a02c9159334a19164e68dd95a3b943c
+192.168.10.103:7008 192.168.10.103:7001
+
+# 35da64607a02c9159334a19164e68dd95a3b943c 是 7007 结点的 id，可通
+  过 cluster nodes 查看。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>注意：如果原来该结点在集群中的配置信息已经生成到 cluster-config-file 指定的配置文件
+中（如果 cluster-config-file 没有指定则默认为 nodes.conf），这时可能会报错：<br>
+[ERR] Node XXXXXX is not empty. Either the node already knows other nodes
+(check with CLUSTER NODES) or contains some key in database 0<br>
+解决方法是删除生成的配置文件 nodes.conf，删除后再执行./redis-trib.rb add-node 指令</p></div></li> <li>查看集群中的结点，刚添加的 7008 为 7007 的从节点：  cluster nodes</li></ul> <h4 id="删除从节点"><a href="#删除从节点" class="header-anchor">#</a> 删除从节点</h4> <ul><li>命 令 ： ./redis-trib.rb del-node 127.0.0.1:7005
+4b45eb75c8b428fbd77ab979b85080146a9bc017</li> <li>删除已经占有 hash 槽的结点会失败，报错如下：<br>
+[ERR] Node 127.0.0.1:7005 is not empty! Reshard data away and try again.<br>
+需要将该结点占用的 hash 槽分配出去（参考 hash 槽重新分配章节）。</li></ul> <h4 id="jedis-连接集群"><a href="#jedis-连接集群" class="header-anchor">#</a> jedis 连接集群</h4> <p>service iptables stop</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">4/21/2020, 6:32:02 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/coding/interview/mysql优化.html" class="prev">
+        mysql优化
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.48c4d218.js" defer></script><script src="/assets/js/2.0662490d.js" defer></script><script src="/assets/js/70.2cad9587.js" defer></script>
+  </body>
+</html>

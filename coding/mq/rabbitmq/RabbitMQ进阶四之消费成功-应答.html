@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RabbitMQ进阶四之消费成功-应答 | 莫问今朝</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/images/index.jpg">
+    <link rel="manifest" href="/images/index.jpg">
+    <link rel="apple-touch-icon" href="/images/index.jpg">
+    <meta name="description" content="有道无术，术尚可求；有术无道，止于术。">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="expires" cotent="0">
+    <meta http-quiv="pragma" cotent="no-cache, must-revalidate">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.48c4d218.js" as="script"><link rel="preload" href="/assets/js/2.0662490d.js" as="script"><link rel="preload" href="/assets/js/111.847f8867.js" as="script"><link rel="prefetch" href="/assets/js/10.cf2cd822.js"><link rel="prefetch" href="/assets/js/100.ac615c1f.js"><link rel="prefetch" href="/assets/js/101.64dd1084.js"><link rel="prefetch" href="/assets/js/102.d2130633.js"><link rel="prefetch" href="/assets/js/103.279af191.js"><link rel="prefetch" href="/assets/js/104.7dabf384.js"><link rel="prefetch" href="/assets/js/105.7463f0f0.js"><link rel="prefetch" href="/assets/js/106.7f31ad7c.js"><link rel="prefetch" href="/assets/js/107.116435f7.js"><link rel="prefetch" href="/assets/js/108.027815b7.js"><link rel="prefetch" href="/assets/js/109.960cdbf9.js"><link rel="prefetch" href="/assets/js/11.76086253.js"><link rel="prefetch" href="/assets/js/110.02ec919a.js"><link rel="prefetch" href="/assets/js/112.040aac12.js"><link rel="prefetch" href="/assets/js/113.705f2306.js"><link rel="prefetch" href="/assets/js/114.69874db3.js"><link rel="prefetch" href="/assets/js/115.f4d773d2.js"><link rel="prefetch" href="/assets/js/116.686258af.js"><link rel="prefetch" href="/assets/js/117.14312915.js"><link rel="prefetch" href="/assets/js/118.f98ddc13.js"><link rel="prefetch" href="/assets/js/119.d555a25e.js"><link rel="prefetch" href="/assets/js/12.0cc62a6a.js"><link rel="prefetch" href="/assets/js/120.e9f49185.js"><link rel="prefetch" href="/assets/js/121.0858f159.js"><link rel="prefetch" href="/assets/js/122.3b3953e8.js"><link rel="prefetch" href="/assets/js/123.473fe59c.js"><link rel="prefetch" href="/assets/js/124.959f3b8f.js"><link rel="prefetch" href="/assets/js/125.13453e2e.js"><link rel="prefetch" href="/assets/js/126.4f01d4bc.js"><link rel="prefetch" href="/assets/js/127.2c8f7195.js"><link rel="prefetch" href="/assets/js/128.3b103a8f.js"><link rel="prefetch" href="/assets/js/129.56040e37.js"><link rel="prefetch" href="/assets/js/13.d9b92926.js"><link rel="prefetch" href="/assets/js/130.bd773d45.js"><link rel="prefetch" href="/assets/js/131.3d96003b.js"><link rel="prefetch" href="/assets/js/132.79912bd9.js"><link rel="prefetch" href="/assets/js/133.b58f064a.js"><link rel="prefetch" href="/assets/js/134.cc7e9d95.js"><link rel="prefetch" href="/assets/js/135.b64b266e.js"><link rel="prefetch" href="/assets/js/14.9ec827b9.js"><link rel="prefetch" href="/assets/js/15.498937ef.js"><link rel="prefetch" href="/assets/js/16.4ad89f29.js"><link rel="prefetch" href="/assets/js/17.89a92049.js"><link rel="prefetch" href="/assets/js/18.e5c7b02d.js"><link rel="prefetch" href="/assets/js/19.76bf5702.js"><link rel="prefetch" href="/assets/js/20.2c9f96db.js"><link rel="prefetch" href="/assets/js/21.00dfd8c2.js"><link rel="prefetch" href="/assets/js/22.8d4be0a7.js"><link rel="prefetch" href="/assets/js/23.199c8947.js"><link rel="prefetch" href="/assets/js/24.85ed7517.js"><link rel="prefetch" href="/assets/js/25.26441413.js"><link rel="prefetch" href="/assets/js/26.dd979442.js"><link rel="prefetch" href="/assets/js/27.ba5cefbf.js"><link rel="prefetch" href="/assets/js/28.82cb4b25.js"><link rel="prefetch" href="/assets/js/29.2b015a7e.js"><link rel="prefetch" href="/assets/js/3.0ace9d76.js"><link rel="prefetch" href="/assets/js/30.33f7fc27.js"><link rel="prefetch" href="/assets/js/31.88eea1ba.js"><link rel="prefetch" href="/assets/js/32.90279369.js"><link rel="prefetch" href="/assets/js/33.4fed115b.js"><link rel="prefetch" href="/assets/js/34.7c9bbf5f.js"><link rel="prefetch" href="/assets/js/35.245b955b.js"><link rel="prefetch" href="/assets/js/36.0e4a166e.js"><link rel="prefetch" href="/assets/js/37.3c70e4e8.js"><link rel="prefetch" href="/assets/js/38.ec0c3132.js"><link rel="prefetch" href="/assets/js/39.5f7670e7.js"><link rel="prefetch" href="/assets/js/4.d9efc253.js"><link rel="prefetch" href="/assets/js/40.58c8361f.js"><link rel="prefetch" href="/assets/js/41.b785cf22.js"><link rel="prefetch" href="/assets/js/42.57d70211.js"><link rel="prefetch" href="/assets/js/43.ed792435.js"><link rel="prefetch" href="/assets/js/44.5479864b.js"><link rel="prefetch" href="/assets/js/45.cb929f9a.js"><link rel="prefetch" href="/assets/js/46.2c159f35.js"><link rel="prefetch" href="/assets/js/47.464715f6.js"><link rel="prefetch" href="/assets/js/48.75e3115c.js"><link rel="prefetch" href="/assets/js/49.64a7d412.js"><link rel="prefetch" href="/assets/js/5.71c0c7dd.js"><link rel="prefetch" href="/assets/js/50.798deef8.js"><link rel="prefetch" href="/assets/js/51.8962cc70.js"><link rel="prefetch" href="/assets/js/52.34ddf52c.js"><link rel="prefetch" href="/assets/js/53.bf02df08.js"><link rel="prefetch" href="/assets/js/54.cac8aec6.js"><link rel="prefetch" href="/assets/js/55.369ac53d.js"><link rel="prefetch" href="/assets/js/56.da02b3bf.js"><link rel="prefetch" href="/assets/js/57.4e4f5f1a.js"><link rel="prefetch" href="/assets/js/58.645f15e2.js"><link rel="prefetch" href="/assets/js/59.8bdef6ee.js"><link rel="prefetch" href="/assets/js/6.c9f44ce5.js"><link rel="prefetch" href="/assets/js/60.b438bfeb.js"><link rel="prefetch" href="/assets/js/61.4a282871.js"><link rel="prefetch" href="/assets/js/62.043db6d0.js"><link rel="prefetch" href="/assets/js/63.28994cf0.js"><link rel="prefetch" href="/assets/js/64.096997b7.js"><link rel="prefetch" href="/assets/js/65.b2ad35ca.js"><link rel="prefetch" href="/assets/js/66.58ce4a03.js"><link rel="prefetch" href="/assets/js/67.c840a4ee.js"><link rel="prefetch" href="/assets/js/68.30b94cbb.js"><link rel="prefetch" href="/assets/js/69.468f4fcf.js"><link rel="prefetch" href="/assets/js/7.7949bb19.js"><link rel="prefetch" href="/assets/js/70.2cad9587.js"><link rel="prefetch" href="/assets/js/71.33d17aa9.js"><link rel="prefetch" href="/assets/js/72.ec045340.js"><link rel="prefetch" href="/assets/js/73.446a2056.js"><link rel="prefetch" href="/assets/js/74.d2c034b8.js"><link rel="prefetch" href="/assets/js/75.32f50d84.js"><link rel="prefetch" href="/assets/js/76.21dd22e7.js"><link rel="prefetch" href="/assets/js/77.7e76c713.js"><link rel="prefetch" href="/assets/js/78.fe5880c6.js"><link rel="prefetch" href="/assets/js/79.9ccec491.js"><link rel="prefetch" href="/assets/js/8.68f30423.js"><link rel="prefetch" href="/assets/js/80.edd6d109.js"><link rel="prefetch" href="/assets/js/81.97e57b40.js"><link rel="prefetch" href="/assets/js/82.6162a617.js"><link rel="prefetch" href="/assets/js/83.bfd482f8.js"><link rel="prefetch" href="/assets/js/84.84122ab5.js"><link rel="prefetch" href="/assets/js/85.2467fb7f.js"><link rel="prefetch" href="/assets/js/86.f8f74288.js"><link rel="prefetch" href="/assets/js/87.f619cbb1.js"><link rel="prefetch" href="/assets/js/88.8aafe5a0.js"><link rel="prefetch" href="/assets/js/89.67cd2762.js"><link rel="prefetch" href="/assets/js/9.56fc1daa.js"><link rel="prefetch" href="/assets/js/90.7801dfa2.js"><link rel="prefetch" href="/assets/js/91.bc03075e.js"><link rel="prefetch" href="/assets/js/92.cd7f11c7.js"><link rel="prefetch" href="/assets/js/93.27188503.js"><link rel="prefetch" href="/assets/js/94.0c4b4391.js"><link rel="prefetch" href="/assets/js/95.cd4d517b.js"><link rel="prefetch" href="/assets/js/96.725d56bd.js"><link rel="prefetch" href="/assets/js/97.01d10b42.js"><link rel="prefetch" href="/assets/js/98.3595be8f.js"><link rel="prefetch" href="/assets/js/99.42dfe524.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">莫问今朝</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/coding/mq/说明.html" class="sidebar-link">说明</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>RabbitMQ系列</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/coding/mq/rabbitmq/Centos7环境安装RabbitMQ.html" class="sidebar-link">Centos7环境安装rabbitmq</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础之前置环境.html" class="sidebar-link">RabbitMQ基础之前置环境</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础一之简单队列.html" class="sidebar-link">RabbitMQ基础一之简单队列</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础二之工作队列.html" class="sidebar-link">RabbitMQ基础二之工作队列</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础三之发布订阅.html" class="sidebar-link">RabbitMQ基础三之发布订阅</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础四之路由.html" class="sidebar-link">RabbitMQ基础四之路由</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础五之话题.html" class="sidebar-link">RabbitMQ基础五之话题</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础六之rpc.html" class="sidebar-link">RabbitMQ基础六之rpc</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶一之消息持久化.html" class="sidebar-link">RabbitMQ进阶一之消息持久化</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶二之提交成功-事务.html" class="sidebar-link">RabbitMQ进阶二之提交成功-事务</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶三之提交成功-confirm.html" class="sidebar-link">RabbitMQ进阶三之提交成功-confirm</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html" class="active sidebar-link">RabbitMQ进阶四之消费成功-应答</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#测试自动应答" class="sidebar-link">测试自动应答</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#构建自动应答队列" class="sidebar-link">构建自动应答队列</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#限制消费速率" class="sidebar-link">限制消费速率</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#构造消费者" class="sidebar-link">构造消费者</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#测试异常消费" class="sidebar-link">测试异常消费</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#改造自动应答代码" class="sidebar-link">改造自动应答代码</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#改造后再去测试" class="sidebar-link">改造后再去测试</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#控制应答的模式" class="sidebar-link">控制应答的模式</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#测试手动应答" class="sidebar-link">测试手动应答</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#构建自动应答队列-2" class="sidebar-link">构建自动应答队列</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#配置手动应答" class="sidebar-link">配置手动应答</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#构造消费者-2" class="sidebar-link">构造消费者</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#测试正常消费" class="sidebar-link">测试正常消费</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#改造消费者代码-添加手动应答" class="sidebar-link">改造消费者代码：添加手动应答</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#测试异常消费-2" class="sidebar-link">测试异常消费</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#手动应答异常消费改造" class="sidebar-link">手动应答异常消费改造</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#改造分析" class="sidebar-link">改造分析</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html#实现部分" class="sidebar-link">实现部分</a></li></ul></li></ul></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html" class="sidebar-link">RabbitMQ进阶五之死信队列</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶六之延迟消费.html" class="sidebar-link">RabbitMQ进阶六之延迟消费</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶七之顺序消费.html" class="sidebar-link">RabbitMQ进阶七之顺序消费</a></li><li><a href="/coding/mq/rabbitmq/更多~.html" class="sidebar-link">更多~</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>RocketMQ系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Kafka系列</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="rabbitmq进阶四之消费成功-应答"><a href="#rabbitmq进阶四之消费成功-应答" class="header-anchor">#</a> RabbitMQ进阶四之消费成功-应答</h1> <hr> <p>消费者应答机制分两种：一种是默认的自动应答机制，一种是手动应答机制。</p> <h2 id="测试自动应答"><a href="#测试自动应答" class="header-anchor">#</a> 测试自动应答</h2> <h3 id="构建自动应答队列"><a href="#构建自动应答队列" class="header-anchor">#</a> 构建自动应答队列</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Bean
+public Queue autoConfirmQueue() {
+    return new Queue(AUTO_CONFIRM_QUEUE);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="限制消费速率"><a href="#限制消费速率" class="header-anchor">#</a> 限制消费速率</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 放在spring.rabbitmq后面
+# 消费者配置
+listener:
+  simple:
+    # 最多只允许一条未确认
+    prefetch: 1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="构造消费者"><a href="#构造消费者" class="header-anchor">#</a> 构造消费者</h3> <p>在消息里面放一个标志，便于产生异常。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RabbitListener(queues = QueueConfig.AUTO_CONFIRM_QUEUE)
+public void receviceMsgAutoConfirm(Message message, Channel channel) {
+    String msg = new String(message.getBody());
+    System.out.println(&quot;消费确认测试 =&gt; &quot; + msg);
+    int flag = Integer.parseInt(msg.split(&quot;-&quot;)[1]);
+    try {
+        Thread.sleep(5000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    int x = 5 / flag;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="测试异常消费"><a href="#测试异常消费" class="header-anchor">#</a> 测试异常消费</h3> <p>发送消息“自动确认新消息688-0”,产生异常。可以观察到自动应答模式下，消费消息发生异常，消息被回退到了消息队列，还是方式队列头部。
+就可以看到，无效重复消费这条消息。如果只有一个消费者，那么该队列后面的消息，就会阻塞，造成消息的积压。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Caused by: java.lang.ArithmeticException: / by zero
+	at com.david.consumer.ConsumerConfirmReceiver.receviceMsgAutoConfirm(ConsumerConfirmReceiver.java:24) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_91]
+	
+	
+消费确认测试 =&gt; 自动确认新消息688-0
+2020-04-22 10:38:22.922  WARN 14880 --- [ntContainer#0-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.	
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="改造自动应答代码"><a href="#改造自动应答代码" class="header-anchor">#</a> 改造自动应答代码</h3> <p>多加了一行代码，具体参数是什么意思，直接看注释。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RabbitListener(queues = QueueConfig.AUTO_CONFIRM_QUEUE)
+public void receviceMsgAutoConfirm(Message message, Channel channel) throws IOException {
+    String msg = new String(message.getBody());
+    System.out.println(&quot;消费确认测试 =&gt; &quot; + msg);
+    int flag = Integer.parseInt(msg.split(&quot;-&quot;)[1]);
+    try {
+        Thread.sleep(5000);
+        int x = 5 / flag;
+    }catch (Exception e){
+        /**
+         * @param deliveryTag 来自收到的标签
+         * @param multiple    拒绝所有消息，包括提供的传递标签，为true；否，仅拒绝提供的交付标签
+         * @param requeue     如果应该重新排队被拒绝的消息，而不是而不是被丢弃/按照字母顺序排列，则为true
+         * */
+        channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,false);
+        throw new RuntimeException(e.getMessage());
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="改造后再去测试"><a href="#改造后再去测试" class="header-anchor">#</a> 改造后再去测试</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>Caused by: java.lang.RuntimeException: / by zero
+	at com.david.consumer.ConsumerConfirmReceiver.receviceMsgAutoConfirm(ConsumerConfirmReceiver.java:33) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_91]
+消费确认测试 =&gt; 自动确认新消息767-0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>消息虽然消费失败了，但是没有出现消息回退到队列的情况。确实解决了消息阻塞的问题，但是消息没有正确消费，被丢失也是很严重的。</p> <h3 id="控制应答的模式"><a href="#控制应答的模式" class="header-anchor">#</a> 控制应答的模式</h3> <p>这个枚举类控制了我们的应答模式。不配置默认NONE,其实是autoAck=true</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public enum AcknowledgeMode {
+	/**
+	 * No acks - {@code autoAck=true} in {@code Channel.basicConsume()}.
+	 */
+	NONE,
+
+	/**
+	 * Manual acks - user must ack/nack via a channel aware listener.
+	 */
+	MANUAL,
+
+	/**
+	 * Auto - the container will issue the ack/nack based on whether
+	 * the listener returns normally, or throws an exception.
+	 * &lt;p&gt;&lt;em&gt;Do not confuse with RabbitMQ {@code autoAck} which is
+	 * represented by {@link #NONE} here&lt;/em&gt;.
+	 */
+	AUTO;
+	
+	......
+	
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h2 id="测试手动应答"><a href="#测试手动应答" class="header-anchor">#</a> 测试手动应答</h2> <h3 id="构建自动应答队列-2"><a href="#构建自动应答队列-2" class="header-anchor">#</a> 构建自动应答队列</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Bean
+public Queue handConfirmQueue() {
+    return new Queue(HAND_CONFIRM_QUEUE);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="配置手动应答"><a href="#配置手动应答" class="header-anchor">#</a> 配置手动应答</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 放在spring.rabbitmq后面
+# 消费者配置
+listener:
+  simple:
+    # 最多只允许一条未确认
+    prefetch: 1
+    # 开启手动应答
+    acknowledge-mode: manual
+    default-requeue-rejected: false
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="构造消费者-2"><a href="#构造消费者-2" class="header-anchor">#</a> 构造消费者</h3> <p>同样的在消息里面放一个标志，便于产生异常。我们先不做手动应答，看看在开启应答的情况下是怎样的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RabbitListener(queues = QueueConfig.HAND_CONFIRM_QUEUE)
+public void receviceMsgHandConfirm(Message message, Channel channel) {
+    String msg = new String(message.getBody());
+    System.out.println(&quot;消费确认测试 =&gt; &quot; + msg);
+    int flag = Integer.parseInt(msg.split(&quot;-&quot;)[1]);
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    int x = 5 / flag;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="测试正常消费"><a href="#测试正常消费" class="header-anchor">#</a> 测试正常消费</h3> <p>我们往队列里面发送三条正常消息，即不会产生异常的消息。如下，三条消息，只消费了一条。还可以看到Rabbitmq管理系统上，有两条消息已准备，
+有一条消息没有应答，一共有三条消息。还记得配置文件吗，配置的是 prefetch: 1 ，只允许一条未应答的消息存在。在只有一个消费者的场景下，
+未对正常消费消息做出应答，也会造成消息消费的阻塞，消息持续积压。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>消费确认测试 =&gt; 手动确认新消息644-1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="/images/rabbitmq/queue-7.png" alt=""><br>、</p> <h3 id="改造消费者代码-添加手动应答"><a href="#改造消费者代码-添加手动应答" class="header-anchor">#</a> 改造消费者代码：添加手动应答</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RabbitListener(queues = QueueConfig.HAND_CONFIRM_QUEUE)
+public void receviceMsgHandConfirm(Message message, Channel channel) throws IOException {
+    String msg = new String(message.getBody());
+    System.out.println(&quot;消费确认测试 =&gt; &quot; + msg);
+    int flag = Integer.parseInt(msg.split(&quot;-&quot;)[1]);
+    try {
+        Thread.sleep(5000);
+        int x = 5/flag;
+    }catch (Exception e){
+        // 消费逻辑出现异常-消息重新放入队列
+        channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
+    }
+    //消费逻辑正常
+    channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="测试异常消费-2"><a href="#测试异常消费-2" class="header-anchor">#</a> 测试异常消费</h3> <p>正常的就没必要测试了，正常消费的消息，手动应答后，就会从队列移除。我们看看手动应答的异常消费信息。<br>
+可以看到异常消费的消息，被重新回退到了消息队列。然后开始无限轮回的重复取出-消费-异常-回退。造成了消费阻塞和消息积压。
+之前我们也说过消息丢失也是很严重的问题。如果在不造成消息消费阻塞，又能保证消息不丢失呢？我们继续改造。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>消费确认测试 =&gt; 手动确认新消息853-0
+/ by zero
+2020-04-22 11:45:01.356 ERROR 16456 --- [68.163.201:5672] o.s.a.r.c.CachingConnectionFactory       : Channel shutdown: channel error; protocol method: #method&lt;channel.close&gt;(reply-code=406, reply-text=PRECONDITION_FAILED - unknown delivery tag 1, class-id=60, method-id=80)
+2020-04-22 11:45:02.359  INFO 16456 --- [ntContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@2aeefcc: tags=[[amq.ctag-Ssz3p1YbOaiq9W-a2898PQ]], channel=Cached Rabbit Channel: PublisherCallbackChannelImpl: AMQChannel(amqp://david@192.168.163.201:5672//dev,1), conn: Proxy@252f626c Shared Rabbit Connection: SimpleConnection@2d000e80 [delegate=amqp://david@192.168.163.201:5672//dev, localPort= 63860], acknowledgeMode=MANUAL local queue size=0
+消费确认测试 =&gt; 手动确认新消息853-0
+/ by zero
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><img src="/images/rabbitmq/queue-8.png" alt=""></p> <h2 id="手动应答异常消费改造"><a href="#手动应答异常消费改造" class="header-anchor">#</a> 手动应答异常消费改造</h2> <h3 id="改造分析"><a href="#改造分析" class="header-anchor">#</a> 改造分析</h3> <p><img src="/images/rabbitmq/queue-13.png" alt=""></p> <ul><li>正常的流程是<strong>Producer</strong>把消息投递到<strong>topicExchange</strong>,由它通过路由键<strong>ackHandKey</strong>把消息存储在<strong>AckQueue</strong>,<strong>Consumer</strong>从<strong>AckQueue</strong>把消息取出，
+正常处理，这条线就完结了。</li> <li>不正常的消费处理
+<ul><li><strong>1.</strong> <strong>Producer</strong>把消息投递到<strong>TopicExchange</strong>,继而分配到<strong>AckQueue</strong>,<strong>Consumer</strong>取出消息。</li> <li><strong>2.</strong> <strong>Consumer</strong>消费消息出现异常，<strong>channel.basicNack</strong>()应答了队列，但是不把消息重新放入<strong>topicExchange</strong>(还记得那个参数吧，这就不多说了。)</li> <li><strong>3.</strong> 消息没有回退到<strong>AckQueue</strong>,由于绑定了死信交换机，消息进入到了<strong>DeadLetterExchange</strong>,再由绑定的路由键<strong>ackRetryKey</strong>,把消息分配到<strong>RetryQueue</strong></li> <li><strong>4.</strong> <strong>RetryQueue</strong>是一个延迟5s，且没有配置消费者的死信队列。5s超时后，超时后传递给<strong>TopicExchange</strong>。然后开始1234又一次轮回。</li> <li><strong>5.</strong> <strong>Consume</strong>r内部有判断同一条消息，消费次数的记录，当消息重试记录大于3(第一次进来是0，大于3其实是大于4)时。将消息绑定路由键
+<strong>ackFailKey</strong>发送到<strong>TopicExchange</strong>,继而分配到<strong>FailQueue</strong>中</li> <li><strong>6.</strong> 在<strong>FailQueue</strong>中消息，就是多次尝试后无法被正确消费的消息，这里可以给它配置一个消费者监听器，消费消息发送邮件警告。或者还可以继续把
+消息投递回去继续循环(没多大意义)。</li></ul></li> <li>这里有一个关键点，就是<strong>AckQueue</strong>和<strong>RetryQueue</strong>互为对方死信队列，只是一个是消息主动丢弃触发，另一个是超时触发。</li> <li>这样设计的意义，在于消息经过时间间隔重试，不会存在消息回退到队头产生的消费阻塞。</li> <li>那就按照图中的命名操作起来吧。</li></ul> <h3 id="实现部分"><a href="#实现部分" class="header-anchor">#</a> 实现部分</h3> <h4 id="队列配置"><a href="#队列配置" class="header-anchor">#</a> 队列配置</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Bean
+public Queue handAckQueue(){
+    Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
+    args.put(&quot;x-dead-letter-exchange&quot;, ExchangeConfig.DEAD_LETTER_EXCHANGE);
+    args.put(&quot;x-dead-letter-routing-key&quot;, BindingConfig.ROUTINGKEY_HAND_RETRY_NAME);
+    return new Queue(HAND_ACK_QUEUE,false,false,false,args);
+}
+
+@Bean
+public Queue handRetryQueue(){
+    Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
+    args.put(&quot;x-dead-letter-exchange&quot;, ExchangeConfig.TOPIC_EXCHANGE);
+    args.put(&quot;x-dead-letter-routing-key&quot;, BindingConfig.ROUTINGKEY_HAND_ACK_NAME);
+    args.put(&quot;x-message-ttl&quot;,5000);
+    return new Queue(HAND_RETRY_QUEUE,false,false,false,args);
+}
+
+@Bean
+public Queue handFailQueue(){
+    return new Queue(HAND_FAIL_QUEUE);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h4 id="绑定关系配置"><a href="#绑定关系配置" class="header-anchor">#</a> 绑定关系配置</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Bean
+public Binding handAckBinding(TopicExchange topicExchange, Queue handAckQueue) {
+    return BindingBuilder.bind(handAckQueue).to(topicExchange).with(ROUTINGKEY_HAND_ACK_NAME);
+}
+
+@Bean
+public Binding handRetryBinding(TopicExchange deadLetterExchange, Queue handRetryQueue) {
+    return BindingBuilder.bind(handRetryQueue).to(deadLetterExchange).with(ROUTINGKEY_HAND_RETRY_NAME);
+}
+
+@Bean
+public Binding handFailBinding(TopicExchange topicExchange, Queue handFailQueue) {
+    return BindingBuilder.bind(handFailQueue).to(topicExchange).with(ROUTINGKEY_HAND_FAIL_NAME);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h4 id="消息生产者"><a href="#消息生产者" class="header-anchor">#</a> 消息生产者</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>public boolean sendToHandAckQueue(String msg){
+    this.template.convertAndSend(topicExchange.getName(), BindingConfig.ROUTINGKEY_HAND_ACK_NAME,msg);
+    return true;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="消息消费者"><a href="#消息消费者" class="header-anchor">#</a> 消息消费者</h4> <ul><li>1.最关键的是获取同一条消息重试次数的方法</li> <li>2.次数超过预设判断时，是发送绑定新路由的消息，并且不退回消息。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RabbitListener(queues = QueueConfig.HAND_ACK_QUEUE)
+public void receive(Message message, Channel channel) throws IOException {
+    String msg = new String(message.getBody());
+    long retryCount = getRetryCount(message.getMessageProperties());
+    if (retryCount &gt; 3) {
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+        rabbitTemplate.convertAndSend(ExchangeConfig.TOPIC_EXCHANGE, BindingConfig.ROUTINGKEY_HAND_FAIL_NAME,msg);
+        return;
+    }
+    int flag = Integer.parseInt(msg.split(&quot;-&quot;)[1]);
+    System.out.println(&quot;[HandAck消费监听器]第 &quot; + retryCount + &quot; 次消费，消息为 =&gt; &quot; + msg + &quot;,时间为 =&gt;&quot; + LocalDateTime.now());
+
+    try {
+        int x = 5 / flag;
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        // 消费逻辑出现异常-消息重新放入队列
+        channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
+    }
+    //消费逻辑正常
+    channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+}
+
+/**
+ * 获取消息被重试的次数
+ */
+private long getRetryCount(MessageProperties messageProperties) {
+    Long retryCount = 0L;
+    if (null != messageProperties) {
+        List&lt;Map&lt;String, ?&gt;&gt; deaths = messageProperties.getXDeathHeader();
+        if (deaths != null &amp;&amp; deaths.size() &gt; 0) {
+            Map&lt;String, Object&gt; death = (Map&lt;String, Object&gt;) deaths.get(0);
+            retryCount = (Long) death.get(&quot;count&quot;);
+        }
+    }
+    return retryCount;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h4 id="看结果"><a href="#看结果" class="header-anchor">#</a> 看结果</h4> <ul><li>重试间隔就是延迟队列设计的5s</li> <li>最后消息也确实落在HandFailQueue
+<img src="/images/rabbitmq/queue-14.png" alt=""> <img src="/images/rabbitmq/queue-15.png" alt=""></li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">4/23/2020, 12:24:18 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/coding/mq/rabbitmq/RabbitMQ进阶三之提交成功-confirm.html" class="prev">
+        RabbitMQ进阶三之提交成功-confirm
+      </a></span> <span class="next"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html">
+        RabbitMQ进阶五之死信队列
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.48c4d218.js" defer></script><script src="/assets/js/2.0662490d.js" defer></script><script src="/assets/js/111.847f8867.js" defer></script>
+  </body>
+</html>

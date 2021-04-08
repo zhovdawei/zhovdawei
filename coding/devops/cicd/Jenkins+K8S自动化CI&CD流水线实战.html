@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Jenkins与k8s的自动化CI&amp;CD流水线实战 | 莫问今朝</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/images/index.jpg">
+    <link rel="manifest" href="/images/index.jpg">
+    <link rel="apple-touch-icon" href="/images/index.jpg">
+    <meta name="description" content="有道无术，术尚可求；有术无道，止于术。">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="expires" cotent="0">
+    <meta http-quiv="pragma" cotent="no-cache, must-revalidate">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.48c4d218.js" as="script"><link rel="preload" href="/assets/js/2.0662490d.js" as="script"><link rel="preload" href="/assets/js/34.7c9bbf5f.js" as="script"><link rel="prefetch" href="/assets/js/10.cf2cd822.js"><link rel="prefetch" href="/assets/js/100.ac615c1f.js"><link rel="prefetch" href="/assets/js/101.64dd1084.js"><link rel="prefetch" href="/assets/js/102.d2130633.js"><link rel="prefetch" href="/assets/js/103.279af191.js"><link rel="prefetch" href="/assets/js/104.7dabf384.js"><link rel="prefetch" href="/assets/js/105.7463f0f0.js"><link rel="prefetch" href="/assets/js/106.7f31ad7c.js"><link rel="prefetch" href="/assets/js/107.116435f7.js"><link rel="prefetch" href="/assets/js/108.027815b7.js"><link rel="prefetch" href="/assets/js/109.960cdbf9.js"><link rel="prefetch" href="/assets/js/11.76086253.js"><link rel="prefetch" href="/assets/js/110.02ec919a.js"><link rel="prefetch" href="/assets/js/111.847f8867.js"><link rel="prefetch" href="/assets/js/112.040aac12.js"><link rel="prefetch" href="/assets/js/113.705f2306.js"><link rel="prefetch" href="/assets/js/114.69874db3.js"><link rel="prefetch" href="/assets/js/115.f4d773d2.js"><link rel="prefetch" href="/assets/js/116.686258af.js"><link rel="prefetch" href="/assets/js/117.14312915.js"><link rel="prefetch" href="/assets/js/118.f98ddc13.js"><link rel="prefetch" href="/assets/js/119.d555a25e.js"><link rel="prefetch" href="/assets/js/12.0cc62a6a.js"><link rel="prefetch" href="/assets/js/120.e9f49185.js"><link rel="prefetch" href="/assets/js/121.0858f159.js"><link rel="prefetch" href="/assets/js/122.3b3953e8.js"><link rel="prefetch" href="/assets/js/123.473fe59c.js"><link rel="prefetch" href="/assets/js/124.959f3b8f.js"><link rel="prefetch" href="/assets/js/125.13453e2e.js"><link rel="prefetch" href="/assets/js/126.4f01d4bc.js"><link rel="prefetch" href="/assets/js/127.2c8f7195.js"><link rel="prefetch" href="/assets/js/128.3b103a8f.js"><link rel="prefetch" href="/assets/js/129.56040e37.js"><link rel="prefetch" href="/assets/js/13.d9b92926.js"><link rel="prefetch" href="/assets/js/130.bd773d45.js"><link rel="prefetch" href="/assets/js/131.3d96003b.js"><link rel="prefetch" href="/assets/js/132.79912bd9.js"><link rel="prefetch" href="/assets/js/133.b58f064a.js"><link rel="prefetch" href="/assets/js/134.cc7e9d95.js"><link rel="prefetch" href="/assets/js/135.b64b266e.js"><link rel="prefetch" href="/assets/js/14.9ec827b9.js"><link rel="prefetch" href="/assets/js/15.498937ef.js"><link rel="prefetch" href="/assets/js/16.4ad89f29.js"><link rel="prefetch" href="/assets/js/17.89a92049.js"><link rel="prefetch" href="/assets/js/18.e5c7b02d.js"><link rel="prefetch" href="/assets/js/19.76bf5702.js"><link rel="prefetch" href="/assets/js/20.2c9f96db.js"><link rel="prefetch" href="/assets/js/21.00dfd8c2.js"><link rel="prefetch" href="/assets/js/22.8d4be0a7.js"><link rel="prefetch" href="/assets/js/23.199c8947.js"><link rel="prefetch" href="/assets/js/24.85ed7517.js"><link rel="prefetch" href="/assets/js/25.26441413.js"><link rel="prefetch" href="/assets/js/26.dd979442.js"><link rel="prefetch" href="/assets/js/27.ba5cefbf.js"><link rel="prefetch" href="/assets/js/28.82cb4b25.js"><link rel="prefetch" href="/assets/js/29.2b015a7e.js"><link rel="prefetch" href="/assets/js/3.0ace9d76.js"><link rel="prefetch" href="/assets/js/30.33f7fc27.js"><link rel="prefetch" href="/assets/js/31.88eea1ba.js"><link rel="prefetch" href="/assets/js/32.90279369.js"><link rel="prefetch" href="/assets/js/33.4fed115b.js"><link rel="prefetch" href="/assets/js/35.245b955b.js"><link rel="prefetch" href="/assets/js/36.0e4a166e.js"><link rel="prefetch" href="/assets/js/37.3c70e4e8.js"><link rel="prefetch" href="/assets/js/38.ec0c3132.js"><link rel="prefetch" href="/assets/js/39.5f7670e7.js"><link rel="prefetch" href="/assets/js/4.d9efc253.js"><link rel="prefetch" href="/assets/js/40.58c8361f.js"><link rel="prefetch" href="/assets/js/41.b785cf22.js"><link rel="prefetch" href="/assets/js/42.57d70211.js"><link rel="prefetch" href="/assets/js/43.ed792435.js"><link rel="prefetch" href="/assets/js/44.5479864b.js"><link rel="prefetch" href="/assets/js/45.cb929f9a.js"><link rel="prefetch" href="/assets/js/46.2c159f35.js"><link rel="prefetch" href="/assets/js/47.464715f6.js"><link rel="prefetch" href="/assets/js/48.75e3115c.js"><link rel="prefetch" href="/assets/js/49.64a7d412.js"><link rel="prefetch" href="/assets/js/5.71c0c7dd.js"><link rel="prefetch" href="/assets/js/50.798deef8.js"><link rel="prefetch" href="/assets/js/51.8962cc70.js"><link rel="prefetch" href="/assets/js/52.34ddf52c.js"><link rel="prefetch" href="/assets/js/53.bf02df08.js"><link rel="prefetch" href="/assets/js/54.cac8aec6.js"><link rel="prefetch" href="/assets/js/55.369ac53d.js"><link rel="prefetch" href="/assets/js/56.da02b3bf.js"><link rel="prefetch" href="/assets/js/57.4e4f5f1a.js"><link rel="prefetch" href="/assets/js/58.645f15e2.js"><link rel="prefetch" href="/assets/js/59.8bdef6ee.js"><link rel="prefetch" href="/assets/js/6.c9f44ce5.js"><link rel="prefetch" href="/assets/js/60.b438bfeb.js"><link rel="prefetch" href="/assets/js/61.4a282871.js"><link rel="prefetch" href="/assets/js/62.043db6d0.js"><link rel="prefetch" href="/assets/js/63.28994cf0.js"><link rel="prefetch" href="/assets/js/64.096997b7.js"><link rel="prefetch" href="/assets/js/65.b2ad35ca.js"><link rel="prefetch" href="/assets/js/66.58ce4a03.js"><link rel="prefetch" href="/assets/js/67.c840a4ee.js"><link rel="prefetch" href="/assets/js/68.30b94cbb.js"><link rel="prefetch" href="/assets/js/69.468f4fcf.js"><link rel="prefetch" href="/assets/js/7.7949bb19.js"><link rel="prefetch" href="/assets/js/70.2cad9587.js"><link rel="prefetch" href="/assets/js/71.33d17aa9.js"><link rel="prefetch" href="/assets/js/72.ec045340.js"><link rel="prefetch" href="/assets/js/73.446a2056.js"><link rel="prefetch" href="/assets/js/74.d2c034b8.js"><link rel="prefetch" href="/assets/js/75.32f50d84.js"><link rel="prefetch" href="/assets/js/76.21dd22e7.js"><link rel="prefetch" href="/assets/js/77.7e76c713.js"><link rel="prefetch" href="/assets/js/78.fe5880c6.js"><link rel="prefetch" href="/assets/js/79.9ccec491.js"><link rel="prefetch" href="/assets/js/8.68f30423.js"><link rel="prefetch" href="/assets/js/80.edd6d109.js"><link rel="prefetch" href="/assets/js/81.97e57b40.js"><link rel="prefetch" href="/assets/js/82.6162a617.js"><link rel="prefetch" href="/assets/js/83.bfd482f8.js"><link rel="prefetch" href="/assets/js/84.84122ab5.js"><link rel="prefetch" href="/assets/js/85.2467fb7f.js"><link rel="prefetch" href="/assets/js/86.f8f74288.js"><link rel="prefetch" href="/assets/js/87.f619cbb1.js"><link rel="prefetch" href="/assets/js/88.8aafe5a0.js"><link rel="prefetch" href="/assets/js/89.67cd2762.js"><link rel="prefetch" href="/assets/js/9.56fc1daa.js"><link rel="prefetch" href="/assets/js/90.7801dfa2.js"><link rel="prefetch" href="/assets/js/91.bc03075e.js"><link rel="prefetch" href="/assets/js/92.cd7f11c7.js"><link rel="prefetch" href="/assets/js/93.27188503.js"><link rel="prefetch" href="/assets/js/94.0c4b4391.js"><link rel="prefetch" href="/assets/js/95.cd4d517b.js"><link rel="prefetch" href="/assets/js/96.725d56bd.js"><link rel="prefetch" href="/assets/js/97.01d10b42.js"><link rel="prefetch" href="/assets/js/98.3595be8f.js"><link rel="prefetch" href="/assets/js/99.42dfe524.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">莫问今朝</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/coding/devops/说明.html" class="sidebar-link">说明</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Docker入门系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Kubernetes入门系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Jenkins入门系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>CI&amp;CD综合实践</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/coding/devops/cicd/CI&amp;CD理论.html" class="sidebar-link">CI&amp;CD理论</a></li><li><a href="/coding/devops/cicd/Jenkins+Docker自动化CI&amp;CD流水线实战.html" class="sidebar-link">Jenkins+Docker自动化CI&amp;CD流水线实战</a></li><li><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html" class="active sidebar-link">Jenkins与k8s的自动化CI&amp;CD流水线实战</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#目标流程" class="sidebar-link">目标流程</a></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#节点准备" class="sidebar-link">节点准备</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#jenkins访问k8s-master" class="sidebar-link">Jenkins访问k8s-master</a></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#配置secret对象" class="sidebar-link">配置Secret对象</a></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#k8s-node1-2访问harbor" class="sidebar-link">k8s-node1/2访问Harbor</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#jenkins流水线脚本" class="sidebar-link">Jenkins流水线脚本</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#拉取代码" class="sidebar-link">拉取代码</a></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#编译打包" class="sidebar-link">编译打包</a></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#镜像制作-推送" class="sidebar-link">镜像制作&amp;推送</a></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#部署k8s集群" class="sidebar-link">部署K8S集群</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#测试一波" class="sidebar-link">测试一波</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#构建一条龙" class="sidebar-link">构建一条龙</a></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#浏览器访问" class="sidebar-link">浏览器访问</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/devops/cicd/Jenkins+K8S自动化CI&amp;CD流水线实战.html#小结一下" class="sidebar-link">小结一下</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="jenkins与k8s的自动化ci-cd流水线实战"><a href="#jenkins与k8s的自动化ci-cd流水线实战" class="header-anchor">#</a> Jenkins与k8s的自动化CI&amp;CD流水线实战</h1> <hr> <h2 id="目标流程"><a href="#目标流程" class="header-anchor">#</a> 目标流程</h2> <p><img src="/images/cicd/cicd-5.png" alt=""><br>
+一般企业就是上面的流程。<br> <strong>开发</strong>：提交代码，推送到Git仓库。<br> <strong>测试</strong>：操作Jenkins的流水线任务，完成测试环境发布，验证测试程序。<br> <strong>运维</strong>：测试提交镜像号，运维发布生产环境。<br> <strong>用户</strong>：用户访问统一LB入口，由LB负载到某个pod上的具体容器，即目标应用程序。<br>
+我们这里只需要实现部署到测试环境即可，如果这一次构建的镜像是通过了测试验证。
+发布生产，只需要在生产K8S集群的Dashboard上完成操作就行。这个里面最重要还是
+得到一个满足需求的镜像。</p> <h2 id="节点准备"><a href="#节点准备" class="header-anchor">#</a> 节点准备</h2> <p>节点可以参考<a href="/coding/devops/cicd/Jenkins+Docker%E8%87%AA%E5%8A%A8%E5%8C%96CI&amp;CD%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AE%9E%E6%88%98">Jenkins+Docker</a> <br>
+192.168.163.106-Docker,不需要，因为我们部署K8S集群，由它去分配具体部署的Docker。<br>
+另外就是准备K8S集群，我这里是三台机：<br>
+192.168.163.108_k8s-master<br>
+192.168.163.109_k8s-node1<br>
+192.168.163.110_k8s-node2<br></p> <h3 id="jenkins访问k8s-master"><a href="#jenkins访问k8s-master" class="header-anchor">#</a> Jenkins访问k8s-master</h3> <p>我们在Jenkins服务器192.168.163.101上访问k8s-master节点192.168.163.108，需要添加ssh免密登录。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 如果没有先生成
+$ ssh-keygen 
+# 查看秘钥
+[root@host101 ~]# cat /root/.ssh/id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWmSU8L4Rcbp6EtvE6LxSIhpliVGobRdzTOqeSJTM9UDL92FCWm2yNOE/DPVTVzx069gBVo0rHxNCoSOMYkk/wHpBVsMnRyaR88pBztM0BD6yYVUan5SDbc1D0u6R68mB9EKYTiqaq4Aw9vfq2a9AGeeOpDJfMM0GhaR5yGm47YfAH467+RXIaer0mbgMxk/bElOggH8PHB+i+WOGXG6/Q9cgz2EdHi1nOyfK4oIsBXRjsRt2DEibzBrya9nD2xJwTIEpfqYqXjaesVvF2Kp3oXCcKTSWegmMTCcZZl9JcNMY/OuK1xgHl+D6OIPyEWDylYzj6EwI8kFAODogI0g+V root@host101
+
+[root@k8s-master ~]# chmod 700 .ssh/
+[root@k8s-master ~]# chmod 700 .ssh/authorized_keys
+# 编辑文件，并把Jenkins服务器上的秘钥复制进去
+[root@k8s-master ~]# vim .ssh/authorized_keys
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="配置secret对象"><a href="#配置secret对象" class="header-anchor">#</a> 配置Secret对象</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 生成一个secret配置文件
+$ kubectl create secret docker-registry my-harbor \
+         --docker-server=depo.zhoudawei.com/mytest \
+         --docker-username=david \
+         --docker-password='Harbor2019' \
+         --docker-email=zdw0607@gmail.com --dry-run -o yaml &gt; harbor-secret.yaml
+
+# 查看该文件，data.dockerconfigjson加密了我们的仓库认证信息
+[root@k8s-master ~]# cat harbor-secret.yaml 
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJkZXBvLnpob3VkYXdlaS5jb20vbXl0ZXN0Ijp7InVzZXJuYW1lIjoiZGF2aWQiLCJwYXNzd29yZCI6IkhhcmJvcjIwMTkiLCJlbWFpbCI6InpkdzA2MDdAZ21haWwuY29tIiwiYXV0aCI6IlpHRjJhV1E2U0dGeVltOXlNakF4T1E9PSJ9fX0=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: my-harbor
+type: kubernetes.io/dockerconfigjson
+
+        
+# 启动该文件
+[root@k8s-master ~]# kubectl get secret
+NAME                  TYPE                                  DATA   AGE
+default-token-2jhfm   kubernetes.io/service-account-token   3      10d
+my-harbor             kubernetes.io/dockerconfigjson        1      8s
+
+# 在需要镜像认证的地方配置下面的信息
+====================================
+spec:
+  containers:
+  - image: param-image
+    name: param-name
+  imagePullSecrets:
+  - name: my-harbor
+====================================
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><h3 id="k8s-node1-2访问harbor"><a href="#k8s-node1-2访问harbor" class="header-anchor">#</a> k8s-node1/2访问Harbor</h3> <p>两个节点负责具体的容器部署工作，需要从镜像仓库拉取镜像。如果你的Harbor
+是配置的https访问，那么你需要在node1/2上添加凭证。具体的凭证生成请查看
+<a href="/coding/devops/docker/%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93Harbor">Harbor镜像仓库</a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@k8s-node2 ~]# vi /etc/hosts
+#####################################################
+192.168.163.107 depo.zhoudawei.com
+#####################################################
+[root@k8s-node2 ~]# mkdir /etc/docker/certs.d/depo.zhoudawei.com -p
+
+[root@k8s-node2 ~]# scp root@192.168.163.107:/root/harbor/ssl/depo.zhoudawei.com.crt /etc/docker/certs.d/depo.zhoudawei.com
+The authenticity of host '192.168.163.107 (192.168.163.107)' can't be established.
+ECDSA key fingerprint is SHA256:Nw2ekiMBaEVdz3FxqabFggQqG0LNIiVRRXa+cd9P+Is.
+ECDSA key fingerprint is MD5:2e:af:fe:47:01:60:62:63:c4:fa:dc:14:d6:4e:7f:c9.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.163.107' (ECDSA) to the list of known hosts.
+root@192.168.163.107's password: 
+depo.zhoudawei.com.crt                                                                                    100% 1862   972.6KB/s   00:00    
+
+[root@k8s-node2 ~]# docker login -udavid -pHarbor2019 depo.zhoudawei.com
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h2 id="jenkins流水线脚本"><a href="#jenkins流水线脚本" class="header-anchor">#</a> Jenkins流水线脚本</h2> <h3 id="拉取代码"><a href="#拉取代码" class="header-anchor">#</a> 拉取代码</h3> <p>和<a href="/coding/devops/cicd/Jenkins+Docker%E8%87%AA%E5%8A%A8%E5%8C%96CI&amp;CD%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AE%9E%E6%88%98">Jenkins+Docker</a>一样</p> <h3 id="编译打包"><a href="#编译打包" class="header-anchor">#</a> 编译打包</h3> <p>和<a href="/coding/devops/cicd/Jenkins+Docker%E8%87%AA%E5%8A%A8%E5%8C%96CI&amp;CD%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AE%9E%E6%88%98">Jenkins+Docker</a>一样</p> <h3 id="镜像制作-推送"><a href="#镜像制作-推送" class="header-anchor">#</a> 镜像制作&amp;推送</h3> <p>和<a href="/coding/devops/cicd/Jenkins+Docker%E8%87%AA%E5%8A%A8%E5%8C%96CI&amp;CD%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AE%9E%E6%88%98">Jenkins+Docker</a>一样</p> <h3 id="部署k8s集群"><a href="#部署k8s集群" class="header-anchor">#</a> 部署K8S集群</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>stage('部署') {
+    sh '''
+        REPOSITORY=depo.zhoudawei.com/mytest/java-web-1:${branch}
+        ssh root@192.168.163.108 &quot;/usr/bin/rm -rf k8s-java |true&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/mkdir k8s-java&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/cd k8s-java&quot;
+        
+        # 依次关闭ingress,service,deployment
+        # 重复构建可以利用deployment升级来替换，我这里为了省事就干掉原来的
+        ssh root@192.168.163.108 &quot;/usr/bin/kubectl delete ingress/k8s-java&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/kubectl delete svc/k8s-java&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/kubectl delete deploy/k8s-java&quot;
+        
+        # 复制deployment模板，并替换其中的变量值
+        ssh root@192.168.163.108 &quot;/usr/bin/cp /root/deploy-demo.yaml deploy.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-name/k8s-java/g' deploy.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-num/3/g' deploy.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's!param-image!$REPOSITORY!g' deploy.yaml&quot;
+       
+        # 复制service模板，并替换其中的变量值
+        ssh root@192.168.163.108 &quot;/usr/bin/cp /root/svc-demo.yaml svc.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-name/k8s-java/g' svc.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-port/80/g' svc.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-target-port/8080/g' svc.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-type/ClusterIP/g' svc.yaml&quot;
+        
+        # 复制ingress模板，并替换其中的变量值
+        ssh root@192.168.163.108 &quot;/usr/bin/cp /root/ingress-demo.yaml ingress.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-name/k8s-java/g' ingress.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-url/k8s.test.com/g' ingress.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/sed -i 's/param-port/80/g' ingress.yaml&quot;
+        
+        # 依次启动deployment,service,ingress
+        ssh root@192.168.163.108 &quot;/usr/bin/kubectl apply -f deploy.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/kubectl apply -f svc.yaml&quot;
+        ssh root@192.168.163.108 &quot;/usr/bin/kubectl apply -f ingress.yaml&quot;
+        
+    '''  
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><p><img src="/images/cicd/cicd-6.png" alt=""><br>
+我这里预先在/root/下创建了三个模板文件：<br>
+deploy-demo.yaml<br>
+svc-demo.yaml<br>
+ingress-demo.yaml<br>
+我们只需要制定好k8s部署的参数规则，当一个构建过来，我们只需要在脚本里面，复制这三个文件的
+副本，然后替换其中的参数。依次执行就OK了。<br> <a href="/coding/devops/kubernetes/Deployment%E6%8E%A7%E5%88%B6%E5%99%A8">理解Deployment</a><br> <a href="/coding/devops/kubernetes/Service%E7%BB%9F%E4%B8%80%E8%AE%BF%E9%97%AE%E5%85%A5%E5%8F%A3">理解Service</a><br> <a href="/coding/devops/kubernetes/Ingress%E5%AF%B9%E5%A4%96%E6%9A%B4%E9%9C%B2%E5%BA%94%E7%94%A8">理解Ingress</a><br></p> <h2 id="测试一波"><a href="#测试一波" class="header-anchor">#</a> 测试一波</h2> <h3 id="构建一条龙"><a href="#构建一条龙" class="header-anchor">#</a> 构建一条龙</h3> <p><img src="/images/cicd/jd-4.gif" alt=""><br>
+如上演示，新建一个k8s-java的流水线任务。前面三步没啥可说的。前一篇都说过了。<br>
+然后这里需要注意的是部署这个环节的脚本，我写了较多重复参数，优化起来是可以在脚本前面部分，
+把相关参数设置好，后面stage里面的脚本完全可以固定模式，引用前面的变量即可。这样一来，如果
+有新项目要创建人物，我们可以要求他们按照要求填写项目的Git地址，项目名...等参数。这样就可以
+去完成自动化的构建任务了。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 查看deployment,service,ingress的状态
+[root@k8s-master ~]# kubectl get deploy,svc,ingress
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.extensions/k8s-java   3/3     3            3           2m
+deployment.extensions/web        2/2     2            2           7d21h
+
+NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+service/k8s-java     ClusterIP   10.1.118.49   &lt;none&gt;        80/TCP    2m
+service/kubernetes   ClusterIP   10.1.0.1      &lt;none&gt;        443/TCP   10d
+service/web          ClusterIP   10.1.71.141   &lt;none&gt;        80/TCP    6d22h
+
+NAME                          HOSTS          ADDRESS   PORTS   AGE
+ingress.extensions/k8s-java   k8s.test.com             80      119s
+ingress.extensions/web        test.web.com             80      6d23h
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="浏览器访问"><a href="#浏览器访问" class="header-anchor">#</a> 浏览器访问</h3> <p><img src="/images/cicd/jd-5.gif" alt=""><br>
+ingress章节中讲过，域名访问如何配置。这里我们配置的域名是：k8s.test.com</p> <h2 id="小结一下"><a href="#小结一下" class="header-anchor">#</a> 小结一下</h2> <p>此次我们只是搭建了CI/CD自动化构建流水线任务的主体。比如一些细节，构建失败邮件通知，k8s
+集群监控，elk日志收集...这些都将在往后的学习生涯中总结。总得来说，综合实践，还算顺利。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">12/17/2019, 9:41:42 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/coding/devops/cicd/Jenkins+Docker自动化CI&amp;CD流水线实战.html" class="prev">
+        Jenkins+Docker自动化CI&amp;CD流水线实战
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.48c4d218.js" defer></script><script src="/assets/js/2.0662490d.js" defer></script><script src="/assets/js/34.7c9bbf5f.js" defer></script>
+  </body>
+</html>

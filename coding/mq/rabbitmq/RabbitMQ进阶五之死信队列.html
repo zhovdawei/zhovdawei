@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RabbitMQ进阶五之死信队列 | 莫问今朝</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/images/index.jpg">
+    <link rel="manifest" href="/images/index.jpg">
+    <link rel="apple-touch-icon" href="/images/index.jpg">
+    <meta name="description" content="有道无术，术尚可求；有术无道，止于术。">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="expires" cotent="0">
+    <meta http-quiv="pragma" cotent="no-cache, must-revalidate">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.48c4d218.js" as="script"><link rel="preload" href="/assets/js/2.0662490d.js" as="script"><link rel="preload" href="/assets/js/109.960cdbf9.js" as="script"><link rel="prefetch" href="/assets/js/10.cf2cd822.js"><link rel="prefetch" href="/assets/js/100.ac615c1f.js"><link rel="prefetch" href="/assets/js/101.64dd1084.js"><link rel="prefetch" href="/assets/js/102.d2130633.js"><link rel="prefetch" href="/assets/js/103.279af191.js"><link rel="prefetch" href="/assets/js/104.7dabf384.js"><link rel="prefetch" href="/assets/js/105.7463f0f0.js"><link rel="prefetch" href="/assets/js/106.7f31ad7c.js"><link rel="prefetch" href="/assets/js/107.116435f7.js"><link rel="prefetch" href="/assets/js/108.027815b7.js"><link rel="prefetch" href="/assets/js/11.76086253.js"><link rel="prefetch" href="/assets/js/110.02ec919a.js"><link rel="prefetch" href="/assets/js/111.847f8867.js"><link rel="prefetch" href="/assets/js/112.040aac12.js"><link rel="prefetch" href="/assets/js/113.705f2306.js"><link rel="prefetch" href="/assets/js/114.69874db3.js"><link rel="prefetch" href="/assets/js/115.f4d773d2.js"><link rel="prefetch" href="/assets/js/116.686258af.js"><link rel="prefetch" href="/assets/js/117.14312915.js"><link rel="prefetch" href="/assets/js/118.f98ddc13.js"><link rel="prefetch" href="/assets/js/119.d555a25e.js"><link rel="prefetch" href="/assets/js/12.0cc62a6a.js"><link rel="prefetch" href="/assets/js/120.e9f49185.js"><link rel="prefetch" href="/assets/js/121.0858f159.js"><link rel="prefetch" href="/assets/js/122.3b3953e8.js"><link rel="prefetch" href="/assets/js/123.473fe59c.js"><link rel="prefetch" href="/assets/js/124.959f3b8f.js"><link rel="prefetch" href="/assets/js/125.13453e2e.js"><link rel="prefetch" href="/assets/js/126.4f01d4bc.js"><link rel="prefetch" href="/assets/js/127.2c8f7195.js"><link rel="prefetch" href="/assets/js/128.3b103a8f.js"><link rel="prefetch" href="/assets/js/129.56040e37.js"><link rel="prefetch" href="/assets/js/13.d9b92926.js"><link rel="prefetch" href="/assets/js/130.bd773d45.js"><link rel="prefetch" href="/assets/js/131.3d96003b.js"><link rel="prefetch" href="/assets/js/132.79912bd9.js"><link rel="prefetch" href="/assets/js/133.b58f064a.js"><link rel="prefetch" href="/assets/js/134.cc7e9d95.js"><link rel="prefetch" href="/assets/js/135.b64b266e.js"><link rel="prefetch" href="/assets/js/14.9ec827b9.js"><link rel="prefetch" href="/assets/js/15.498937ef.js"><link rel="prefetch" href="/assets/js/16.4ad89f29.js"><link rel="prefetch" href="/assets/js/17.89a92049.js"><link rel="prefetch" href="/assets/js/18.e5c7b02d.js"><link rel="prefetch" href="/assets/js/19.76bf5702.js"><link rel="prefetch" href="/assets/js/20.2c9f96db.js"><link rel="prefetch" href="/assets/js/21.00dfd8c2.js"><link rel="prefetch" href="/assets/js/22.8d4be0a7.js"><link rel="prefetch" href="/assets/js/23.199c8947.js"><link rel="prefetch" href="/assets/js/24.85ed7517.js"><link rel="prefetch" href="/assets/js/25.26441413.js"><link rel="prefetch" href="/assets/js/26.dd979442.js"><link rel="prefetch" href="/assets/js/27.ba5cefbf.js"><link rel="prefetch" href="/assets/js/28.82cb4b25.js"><link rel="prefetch" href="/assets/js/29.2b015a7e.js"><link rel="prefetch" href="/assets/js/3.0ace9d76.js"><link rel="prefetch" href="/assets/js/30.33f7fc27.js"><link rel="prefetch" href="/assets/js/31.88eea1ba.js"><link rel="prefetch" href="/assets/js/32.90279369.js"><link rel="prefetch" href="/assets/js/33.4fed115b.js"><link rel="prefetch" href="/assets/js/34.7c9bbf5f.js"><link rel="prefetch" href="/assets/js/35.245b955b.js"><link rel="prefetch" href="/assets/js/36.0e4a166e.js"><link rel="prefetch" href="/assets/js/37.3c70e4e8.js"><link rel="prefetch" href="/assets/js/38.ec0c3132.js"><link rel="prefetch" href="/assets/js/39.5f7670e7.js"><link rel="prefetch" href="/assets/js/4.d9efc253.js"><link rel="prefetch" href="/assets/js/40.58c8361f.js"><link rel="prefetch" href="/assets/js/41.b785cf22.js"><link rel="prefetch" href="/assets/js/42.57d70211.js"><link rel="prefetch" href="/assets/js/43.ed792435.js"><link rel="prefetch" href="/assets/js/44.5479864b.js"><link rel="prefetch" href="/assets/js/45.cb929f9a.js"><link rel="prefetch" href="/assets/js/46.2c159f35.js"><link rel="prefetch" href="/assets/js/47.464715f6.js"><link rel="prefetch" href="/assets/js/48.75e3115c.js"><link rel="prefetch" href="/assets/js/49.64a7d412.js"><link rel="prefetch" href="/assets/js/5.71c0c7dd.js"><link rel="prefetch" href="/assets/js/50.798deef8.js"><link rel="prefetch" href="/assets/js/51.8962cc70.js"><link rel="prefetch" href="/assets/js/52.34ddf52c.js"><link rel="prefetch" href="/assets/js/53.bf02df08.js"><link rel="prefetch" href="/assets/js/54.cac8aec6.js"><link rel="prefetch" href="/assets/js/55.369ac53d.js"><link rel="prefetch" href="/assets/js/56.da02b3bf.js"><link rel="prefetch" href="/assets/js/57.4e4f5f1a.js"><link rel="prefetch" href="/assets/js/58.645f15e2.js"><link rel="prefetch" href="/assets/js/59.8bdef6ee.js"><link rel="prefetch" href="/assets/js/6.c9f44ce5.js"><link rel="prefetch" href="/assets/js/60.b438bfeb.js"><link rel="prefetch" href="/assets/js/61.4a282871.js"><link rel="prefetch" href="/assets/js/62.043db6d0.js"><link rel="prefetch" href="/assets/js/63.28994cf0.js"><link rel="prefetch" href="/assets/js/64.096997b7.js"><link rel="prefetch" href="/assets/js/65.b2ad35ca.js"><link rel="prefetch" href="/assets/js/66.58ce4a03.js"><link rel="prefetch" href="/assets/js/67.c840a4ee.js"><link rel="prefetch" href="/assets/js/68.30b94cbb.js"><link rel="prefetch" href="/assets/js/69.468f4fcf.js"><link rel="prefetch" href="/assets/js/7.7949bb19.js"><link rel="prefetch" href="/assets/js/70.2cad9587.js"><link rel="prefetch" href="/assets/js/71.33d17aa9.js"><link rel="prefetch" href="/assets/js/72.ec045340.js"><link rel="prefetch" href="/assets/js/73.446a2056.js"><link rel="prefetch" href="/assets/js/74.d2c034b8.js"><link rel="prefetch" href="/assets/js/75.32f50d84.js"><link rel="prefetch" href="/assets/js/76.21dd22e7.js"><link rel="prefetch" href="/assets/js/77.7e76c713.js"><link rel="prefetch" href="/assets/js/78.fe5880c6.js"><link rel="prefetch" href="/assets/js/79.9ccec491.js"><link rel="prefetch" href="/assets/js/8.68f30423.js"><link rel="prefetch" href="/assets/js/80.edd6d109.js"><link rel="prefetch" href="/assets/js/81.97e57b40.js"><link rel="prefetch" href="/assets/js/82.6162a617.js"><link rel="prefetch" href="/assets/js/83.bfd482f8.js"><link rel="prefetch" href="/assets/js/84.84122ab5.js"><link rel="prefetch" href="/assets/js/85.2467fb7f.js"><link rel="prefetch" href="/assets/js/86.f8f74288.js"><link rel="prefetch" href="/assets/js/87.f619cbb1.js"><link rel="prefetch" href="/assets/js/88.8aafe5a0.js"><link rel="prefetch" href="/assets/js/89.67cd2762.js"><link rel="prefetch" href="/assets/js/9.56fc1daa.js"><link rel="prefetch" href="/assets/js/90.7801dfa2.js"><link rel="prefetch" href="/assets/js/91.bc03075e.js"><link rel="prefetch" href="/assets/js/92.cd7f11c7.js"><link rel="prefetch" href="/assets/js/93.27188503.js"><link rel="prefetch" href="/assets/js/94.0c4b4391.js"><link rel="prefetch" href="/assets/js/95.cd4d517b.js"><link rel="prefetch" href="/assets/js/96.725d56bd.js"><link rel="prefetch" href="/assets/js/97.01d10b42.js"><link rel="prefetch" href="/assets/js/98.3595be8f.js"><link rel="prefetch" href="/assets/js/99.42dfe524.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">莫问今朝</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/coding/mq/说明.html" class="sidebar-link">说明</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>RabbitMQ系列</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/coding/mq/rabbitmq/Centos7环境安装RabbitMQ.html" class="sidebar-link">Centos7环境安装rabbitmq</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础之前置环境.html" class="sidebar-link">RabbitMQ基础之前置环境</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础一之简单队列.html" class="sidebar-link">RabbitMQ基础一之简单队列</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础二之工作队列.html" class="sidebar-link">RabbitMQ基础二之工作队列</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础三之发布订阅.html" class="sidebar-link">RabbitMQ基础三之发布订阅</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础四之路由.html" class="sidebar-link">RabbitMQ基础四之路由</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础五之话题.html" class="sidebar-link">RabbitMQ基础五之话题</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ基础六之rpc.html" class="sidebar-link">RabbitMQ基础六之rpc</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶一之消息持久化.html" class="sidebar-link">RabbitMQ进阶一之消息持久化</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶二之提交成功-事务.html" class="sidebar-link">RabbitMQ进阶二之提交成功-事务</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶三之提交成功-confirm.html" class="sidebar-link">RabbitMQ进阶三之提交成功-confirm</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html" class="sidebar-link">RabbitMQ进阶四之消费成功-应答</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html" class="active sidebar-link">RabbitMQ进阶五之死信队列</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#死信队列原理" class="sidebar-link">死信队列原理</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#准备" class="sidebar-link">准备</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#准备四个队列" class="sidebar-link">准备四个队列</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#配置交换机" class="sidebar-link">配置交换机</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#配置绑定关系" class="sidebar-link">配置绑定关系</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#注意配置文件" class="sidebar-link">注意配置文件</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#准备消息生成方" class="sidebar-link">准备消息生成方</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#测试整起来" class="sidebar-link">测试整起来</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#测试业务异常丢弃消息" class="sidebar-link">测试业务异常丢弃消息</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#测试超时不消费的消息" class="sidebar-link">测试超时不消费的消息</a></li><li class="sidebar-sub-header"><a href="/coding/mq/rabbitmq/RabbitMQ进阶五之死信队列.html#测试队列已满" class="sidebar-link">测试队列已满</a></li></ul></li></ul></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶六之延迟消费.html" class="sidebar-link">RabbitMQ进阶六之延迟消费</a></li><li><a href="/coding/mq/rabbitmq/RabbitMQ进阶七之顺序消费.html" class="sidebar-link">RabbitMQ进阶七之顺序消费</a></li><li><a href="/coding/mq/rabbitmq/更多~.html" class="sidebar-link">更多~</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>RocketMQ系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Kafka系列</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="rabbitmq进阶五之死信队列"><a href="#rabbitmq进阶五之死信队列" class="header-anchor">#</a> RabbitMQ进阶五之死信队列</h1> <hr> <h2 id="死信队列原理"><a href="#死信队列原理" class="header-anchor">#</a> 死信队列原理</h2> <p><img src="/images/rabbitmq/queue-9.png" alt=""><br>
+看图就差不多懂了。业务队列上绑定一个一个死信交换机。消息就可以由死信交换机路由到死信队列。<br>
+消息进入死信队列的前提是有队列绑定了死信交换机，并且死信交换机上绑定了队列。下面有几种消息进入死信队列的场景：</p> <ul><li>消息被消息者主动放弃，注意这里的主动放弃是指消息处理逻辑即使异常了，也不把消息重新放入业务队列。</li> <li>消息在业务队列中设置了超时，超时不处理，消息也会进入死信队列</li> <li>业务队列消息塞满了，新的消息无法进入业务队列。
+<br>
+下面我们就用代码模拟下这三种场景</li></ul> <h2 id="准备"><a href="#准备" class="header-anchor">#</a> 准备</h2> <h3 id="准备四个队列"><a href="#准备四个队列" class="header-anchor">#</a> 准备四个队列</h3> <ul><li>failQueue 用于存放通过死信交换机路由进来的消息，换句话说failQueue就是死信队列</li> <li>handleQueue 用于测试处理业务逻辑出现异常被放弃的消息的业务消息队列</li> <li>delayQueue 用于存放延迟消息的队列，这个队列没有消费者，为的就是看看消息超时是否会进入死信队列</li> <li>lengthQueue 这是一个限制长度为3的消息队列，当继续投递第四条消息时，观察是否会有消息进入死信队列</li> <li>注意我这里的队列都是非持久化队列，注意参数。为了重启后环境还原，这样测试方便。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Bean
+public Queue failQueue(){
+    return new Queue(FAIL_QUEUE,false);
+}
+
+@Bean
+public Queue delayQueue(){
+    Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
+    //x-dead-letter-exchange    这里声明当前队列绑定的死信交换机
+    args.put(&quot;x-dead-letter-exchange&quot;, ExchangeConfig.DEAD_LETTER_EXCHANGE);
+    //x-dead-letter-routing-key  这里声明当前队列的死信路由key
+    args.put(&quot;x-dead-letter-routing-key&quot;, BindingConfig.ROUTINGKEY_FAIL_NAME);
+    args.put(&quot;x-message-ttl&quot;,5000);
+    return new Queue(DELAY_QUEUE,false,false,false,args);
+}
+
+@Bean
+public Queue handleQueue(){
+    Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
+    //x-dead-letter-exchange    这里声明当前队列绑定的死信交换机
+    args.put(&quot;x-dead-letter-exchange&quot;, ExchangeConfig.DEAD_LETTER_EXCHANGE);
+    //x-dead-letter-routing-key  这里声明当前队列的死信路由key
+    args.put(&quot;x-dead-letter-routing-key&quot;, BindingConfig.ROUTINGKEY_FAIL_NAME);
+    return new Queue(HANDLE_QUEUE,false,false,false,args);
+}
+
+@Bean
+public Queue lengthQueue(){
+    Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
+    //x-dead-letter-exchange    这里声明当前队列绑定的死信交换机
+    args.put(&quot;x-dead-letter-exchange&quot;, ExchangeConfig.DEAD_LETTER_EXCHANGE);
+    //x-dead-letter-routing-key  这里声明当前队列的死信路由key
+    args.put(&quot;x-dead-letter-routing-key&quot;, BindingConfig.ROUTINGKEY_FAIL_NAME);
+    args.put(&quot;x-max-length&quot;,3);
+    return new Queue(LENGTH_QUEUE,false,false,false,args);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><h3 id="配置交换机"><a href="#配置交换机" class="header-anchor">#</a> 配置交换机</h3> <ul><li>两个都是topic类型的交换机，但是扮演的角色不同</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Bean
+public TopicExchange topicExchange() {
+    return new TopicExchange(TOPIC_EXCHANGE);
+}
+
+@Bean
+public TopicExchange deadLetterExchange() {
+    return new TopicExchange(DEAD_LETTER_EXCHANGE);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="配置绑定关系"><a href="#配置绑定关系" class="header-anchor">#</a> 配置绑定关系</h3> <ul><li>failQueue 绑定在死信交换机 deadLetterExchange 上，路由：failKey</li> <li>handleQueue绑定在死信交换机 topicExchange 上，路由：handleKey</li> <li>delayQueue绑定在死信交换机 topicExchange 上，路由：delayKey</li> <li>lengthQueue绑定在死信交换机 topicExchange 上，路由：lengthKey</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Bean
+public Binding delayBinding(TopicExchange topicExchange, Queue delayQueue) {
+    return BindingBuilder.bind(delayQueue).to(topicExchange).with(ROUTINGKEY_DELAY_NAME);
+}
+
+@Bean
+public Binding failBinding(TopicExchange deadLetterExchange, Queue failQueue) {
+    return BindingBuilder.bind(failQueue).to(deadLetterExchange).with(ROUTINGKEY_FAIL_NAME);
+}
+
+@Bean
+public Binding handleBinding(TopicExchange topicExchange, Queue handleQueue) {
+    return BindingBuilder.bind(handleQueue).to(topicExchange).with(ROUTINGKEY_HANDLE_NAME);
+}
+
+@Bean
+public Binding lengthBinding(TopicExchange topicExchange, Queue lengthQueue) {
+    return BindingBuilder.bind(lengthQueue).to(topicExchange).with(ROUTINGKEY_LENGTH_NAME);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h3 id="注意配置文件"><a href="#注意配置文件" class="header-anchor">#</a> 注意配置文件</h3> <p>我是关闭了手动应答来测试的，如果你有其他目的，请自行修改响应的消费者代码逻辑。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 消费者配置
+listener:
+  simple:
+    # 最多只允许一条未确认
+    prefetch: 1
+    # 开启手动应答
+#    acknowledge-mode: manual
+#    default-requeue-rejected: false
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="准备消息生成方"><a href="#准备消息生成方" class="header-anchor">#</a> 准备消息生成方</h3> <p>这个没什么特别的，也别整事务或者确认机制，我们只测死信，其他的能简则简。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1.投递消息到 handleQueue
+public boolean sendToHandleQueue(String msg){
+    rabbitTemplate.convertAndSend(topicExchange.getName(), BindingConfig.ROUTINGKEY_HANDLE_NAME,msg);
+    System.out.println(msg+&quot; : 发送时间 =&gt; &quot;+System.currentTimeMillis());
+    return true;
+}
+
+2.投递下次到 delayQueue
+public boolean sendDelayQueue(String msg){
+    rabbitTemplate.convertAndSend(topicExchange.getName(), BindingConfig.ROUTINGKEY_DELAY_NAME,msg);
+    System.out.println(msg+&quot; : 发送时间 =&gt; &quot;+ LocalDateTime.now());
+    return true;
+}
+
+3.投递消息到 lengthQueue
+public boolean sendLengthQueue(String msg){
+    rabbitTemplate.convertAndSend(topicExchange.getName(), BindingConfig.ROUTINGKEY_LENGTH_NAME,msg);
+    System.out.println(msg+&quot; : 发送时间 =&gt; &quot;+ LocalDateTime.now());
+    return true;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h2 id="测试整起来"><a href="#测试整起来" class="header-anchor">#</a> 测试整起来</h2> <h3 id="测试业务异常丢弃消息"><a href="#测试业务异常丢弃消息" class="header-anchor">#</a> 测试业务异常丢弃消息</h3> <p>1.先上业务消息消费处理代码</p> <ul><li>主要查看channel.basicNack()这行代码，第三个参数是消息不重新入队的意思，即丢弃这条消息。</li> <li>在消息中留下一个标记，控制异常产生。模拟消息丢弃场景。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RabbitListener(queues = QueueConfig.HANDLE_QUEUE)
+public void receive(Message message, Channel channel) throws IOException {
+    String msg = new String(message.getBody());
+    System.out.println(&quot;[死信队列]测试 =&gt; &quot; + msg);
+    int flag = Integer.parseInt(msg.split(&quot;-&quot;)[1]);
+    try {
+        Thread.sleep(1000);
+        int x = 5 / flag;
+    } catch (Exception e) {
+        channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
+        throw new RuntimeException(e.getMessage());
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>2.看结果
+控制消息触发异常，并放弃消息。果然符合预期，消息通过死信交换机进入到了死信队列。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[死信队列]测试 =&gt; 新消息874-0
+Caused by: java.lang.RuntimeException: / by zero
+	at com.david.consumer.DeadLetterReceiver.receive(DeadLetterReceiver.java:25) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_91]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_91]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_91]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_91]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p><img src="/images/rabbitmq/queue-10.png" alt=""><br></p> <h3 id="测试超时不消费的消息"><a href="#测试超时不消费的消息" class="header-anchor">#</a> 测试超时不消费的消息</h3> <p>模拟超时不消费，只需要不给该队列配置消费者监听器就可以了，时间到了就自然会进入死信队列。不过为了让我们更清楚的知道，这个消息真的是超时了。
+我们来给死信队列配置一个消费者监听器。比如上面设置的延迟5s，我们通过发送消息时间和死信队列消费的时间，来验证超时。<br>
+1.先上监听器</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RabbitListener(queues = QueueConfig.FAIL_QUEUE)
+public void receiveFail(String msg) throws IOException {
+    System.out.println(&quot;[失败队列消费监听] =&gt; &quot; + msg + &quot; : &quot; + LocalDateTime.now());
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>2.往delayQueue里面投递消息</p> <ul><li>还好我手速够快，在5s内抓拍到了消息在delayQueue存在过的证据。因为Rabbitmq后台刷新有延迟，我设置的5s,所以你看的有延迟。不过没关系，看打印
+结果。往delayQueue投递的时间，和failQueue消费掉的时间相差就是5s多一点点，消息流经各种渠道肯定有时间损耗的啦。不过也符合我们的预期了。
+<img src="/images/rabbitmq/queue-11.png" alt=""><br></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>新消息697 : 发送时间 =&gt; 2020-04-22T17:11:45.547
+[失败队列消费监听] =&gt; 新消息697 : 2020-04-22T17:11:50.570
+
+新消息602 : 发送时间 =&gt; 2020-04-22T17:17:19.596
+新消息469 : 发送时间 =&gt; 2020-04-22T17:17:21.614
+[失败队列消费监听] =&gt; 新消息602 : 2020-04-22T17:17:24.619
+[失败队列消费监听] =&gt; 新消息469 : 2020-04-22T17:17:26.636
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="测试队列已满"><a href="#测试队列已满" class="header-anchor">#</a> 测试队列已满</h3> <ul><li>1.上面队列配置，我们配置了容量为3的队列lengthQueue。当投递第四条消息时,到底是第4条消息进入死信队列，还是前三条的哪一条呢？</li> <li>2.保持死信队列消费者监听器，当触发消息进入死信队列时，我们就很容易知道，是哪条消息被推进了死信交换机。</li> <li>3.无须修改代码直接测试，往lengthQueue投递4条带有序号的消息
+<img src="/images/rabbitmq/queue-12.png" alt=""><br></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>新消息664-1 : 发送时间 =&gt; 2020-04-22T17:24:28.286
+新消息282-2 : 发送时间 =&gt; 2020-04-22T17:24:33.078
+新消息36-3 : 发送时间 =&gt; 2020-04-22T17:24:37.288
+新消息197-4 : 发送时间 =&gt; 2020-04-22T17:24:42.789
+[失败队列消费监听] =&gt; 新消息664-1 : 2020-04-22T17:24:42.802
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>由上面的截图和打印可知，lengthQueue信守了承诺，只保存三条信息，而被死信交换机路由到死信队列的消息是序号为1的那条。这可以得出，当队列满了，
+继续投递消息，会把队头的消息移出到死信队列。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">4/22/2020, 9:31:34 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/coding/mq/rabbitmq/RabbitMQ进阶四之消费成功-应答.html" class="prev">
+        RabbitMQ进阶四之消费成功-应答
+      </a></span> <span class="next"><a href="/coding/mq/rabbitmq/RabbitMQ进阶六之延迟消费.html">
+        RabbitMQ进阶六之延迟消费
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.48c4d218.js" defer></script><script src="/assets/js/2.0662490d.js" defer></script><script src="/assets/js/109.960cdbf9.js" defer></script>
+  </body>
+</html>

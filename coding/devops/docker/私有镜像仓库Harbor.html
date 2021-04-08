@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>私有镜像仓库Harbor | 莫问今朝</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/images/index.jpg">
+    <link rel="manifest" href="/images/index.jpg">
+    <link rel="apple-touch-icon" href="/images/index.jpg">
+    <meta name="description" content="有道无术，术尚可求；有术无道，止于术。">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="expires" cotent="0">
+    <meta http-quiv="pragma" cotent="no-cache, must-revalidate">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.48c4d218.js" as="script"><link rel="preload" href="/assets/js/2.0662490d.js" as="script"><link rel="preload" href="/assets/js/42.57d70211.js" as="script"><link rel="prefetch" href="/assets/js/10.cf2cd822.js"><link rel="prefetch" href="/assets/js/100.ac615c1f.js"><link rel="prefetch" href="/assets/js/101.64dd1084.js"><link rel="prefetch" href="/assets/js/102.d2130633.js"><link rel="prefetch" href="/assets/js/103.279af191.js"><link rel="prefetch" href="/assets/js/104.7dabf384.js"><link rel="prefetch" href="/assets/js/105.7463f0f0.js"><link rel="prefetch" href="/assets/js/106.7f31ad7c.js"><link rel="prefetch" href="/assets/js/107.116435f7.js"><link rel="prefetch" href="/assets/js/108.027815b7.js"><link rel="prefetch" href="/assets/js/109.960cdbf9.js"><link rel="prefetch" href="/assets/js/11.76086253.js"><link rel="prefetch" href="/assets/js/110.02ec919a.js"><link rel="prefetch" href="/assets/js/111.847f8867.js"><link rel="prefetch" href="/assets/js/112.040aac12.js"><link rel="prefetch" href="/assets/js/113.705f2306.js"><link rel="prefetch" href="/assets/js/114.69874db3.js"><link rel="prefetch" href="/assets/js/115.f4d773d2.js"><link rel="prefetch" href="/assets/js/116.686258af.js"><link rel="prefetch" href="/assets/js/117.14312915.js"><link rel="prefetch" href="/assets/js/118.f98ddc13.js"><link rel="prefetch" href="/assets/js/119.d555a25e.js"><link rel="prefetch" href="/assets/js/12.0cc62a6a.js"><link rel="prefetch" href="/assets/js/120.e9f49185.js"><link rel="prefetch" href="/assets/js/121.0858f159.js"><link rel="prefetch" href="/assets/js/122.3b3953e8.js"><link rel="prefetch" href="/assets/js/123.473fe59c.js"><link rel="prefetch" href="/assets/js/124.959f3b8f.js"><link rel="prefetch" href="/assets/js/125.13453e2e.js"><link rel="prefetch" href="/assets/js/126.4f01d4bc.js"><link rel="prefetch" href="/assets/js/127.2c8f7195.js"><link rel="prefetch" href="/assets/js/128.3b103a8f.js"><link rel="prefetch" href="/assets/js/129.56040e37.js"><link rel="prefetch" href="/assets/js/13.d9b92926.js"><link rel="prefetch" href="/assets/js/130.bd773d45.js"><link rel="prefetch" href="/assets/js/131.3d96003b.js"><link rel="prefetch" href="/assets/js/132.79912bd9.js"><link rel="prefetch" href="/assets/js/133.b58f064a.js"><link rel="prefetch" href="/assets/js/134.cc7e9d95.js"><link rel="prefetch" href="/assets/js/135.b64b266e.js"><link rel="prefetch" href="/assets/js/14.9ec827b9.js"><link rel="prefetch" href="/assets/js/15.498937ef.js"><link rel="prefetch" href="/assets/js/16.4ad89f29.js"><link rel="prefetch" href="/assets/js/17.89a92049.js"><link rel="prefetch" href="/assets/js/18.e5c7b02d.js"><link rel="prefetch" href="/assets/js/19.76bf5702.js"><link rel="prefetch" href="/assets/js/20.2c9f96db.js"><link rel="prefetch" href="/assets/js/21.00dfd8c2.js"><link rel="prefetch" href="/assets/js/22.8d4be0a7.js"><link rel="prefetch" href="/assets/js/23.199c8947.js"><link rel="prefetch" href="/assets/js/24.85ed7517.js"><link rel="prefetch" href="/assets/js/25.26441413.js"><link rel="prefetch" href="/assets/js/26.dd979442.js"><link rel="prefetch" href="/assets/js/27.ba5cefbf.js"><link rel="prefetch" href="/assets/js/28.82cb4b25.js"><link rel="prefetch" href="/assets/js/29.2b015a7e.js"><link rel="prefetch" href="/assets/js/3.0ace9d76.js"><link rel="prefetch" href="/assets/js/30.33f7fc27.js"><link rel="prefetch" href="/assets/js/31.88eea1ba.js"><link rel="prefetch" href="/assets/js/32.90279369.js"><link rel="prefetch" href="/assets/js/33.4fed115b.js"><link rel="prefetch" href="/assets/js/34.7c9bbf5f.js"><link rel="prefetch" href="/assets/js/35.245b955b.js"><link rel="prefetch" href="/assets/js/36.0e4a166e.js"><link rel="prefetch" href="/assets/js/37.3c70e4e8.js"><link rel="prefetch" href="/assets/js/38.ec0c3132.js"><link rel="prefetch" href="/assets/js/39.5f7670e7.js"><link rel="prefetch" href="/assets/js/4.d9efc253.js"><link rel="prefetch" href="/assets/js/40.58c8361f.js"><link rel="prefetch" href="/assets/js/41.b785cf22.js"><link rel="prefetch" href="/assets/js/43.ed792435.js"><link rel="prefetch" href="/assets/js/44.5479864b.js"><link rel="prefetch" href="/assets/js/45.cb929f9a.js"><link rel="prefetch" href="/assets/js/46.2c159f35.js"><link rel="prefetch" href="/assets/js/47.464715f6.js"><link rel="prefetch" href="/assets/js/48.75e3115c.js"><link rel="prefetch" href="/assets/js/49.64a7d412.js"><link rel="prefetch" href="/assets/js/5.71c0c7dd.js"><link rel="prefetch" href="/assets/js/50.798deef8.js"><link rel="prefetch" href="/assets/js/51.8962cc70.js"><link rel="prefetch" href="/assets/js/52.34ddf52c.js"><link rel="prefetch" href="/assets/js/53.bf02df08.js"><link rel="prefetch" href="/assets/js/54.cac8aec6.js"><link rel="prefetch" href="/assets/js/55.369ac53d.js"><link rel="prefetch" href="/assets/js/56.da02b3bf.js"><link rel="prefetch" href="/assets/js/57.4e4f5f1a.js"><link rel="prefetch" href="/assets/js/58.645f15e2.js"><link rel="prefetch" href="/assets/js/59.8bdef6ee.js"><link rel="prefetch" href="/assets/js/6.c9f44ce5.js"><link rel="prefetch" href="/assets/js/60.b438bfeb.js"><link rel="prefetch" href="/assets/js/61.4a282871.js"><link rel="prefetch" href="/assets/js/62.043db6d0.js"><link rel="prefetch" href="/assets/js/63.28994cf0.js"><link rel="prefetch" href="/assets/js/64.096997b7.js"><link rel="prefetch" href="/assets/js/65.b2ad35ca.js"><link rel="prefetch" href="/assets/js/66.58ce4a03.js"><link rel="prefetch" href="/assets/js/67.c840a4ee.js"><link rel="prefetch" href="/assets/js/68.30b94cbb.js"><link rel="prefetch" href="/assets/js/69.468f4fcf.js"><link rel="prefetch" href="/assets/js/7.7949bb19.js"><link rel="prefetch" href="/assets/js/70.2cad9587.js"><link rel="prefetch" href="/assets/js/71.33d17aa9.js"><link rel="prefetch" href="/assets/js/72.ec045340.js"><link rel="prefetch" href="/assets/js/73.446a2056.js"><link rel="prefetch" href="/assets/js/74.d2c034b8.js"><link rel="prefetch" href="/assets/js/75.32f50d84.js"><link rel="prefetch" href="/assets/js/76.21dd22e7.js"><link rel="prefetch" href="/assets/js/77.7e76c713.js"><link rel="prefetch" href="/assets/js/78.fe5880c6.js"><link rel="prefetch" href="/assets/js/79.9ccec491.js"><link rel="prefetch" href="/assets/js/8.68f30423.js"><link rel="prefetch" href="/assets/js/80.edd6d109.js"><link rel="prefetch" href="/assets/js/81.97e57b40.js"><link rel="prefetch" href="/assets/js/82.6162a617.js"><link rel="prefetch" href="/assets/js/83.bfd482f8.js"><link rel="prefetch" href="/assets/js/84.84122ab5.js"><link rel="prefetch" href="/assets/js/85.2467fb7f.js"><link rel="prefetch" href="/assets/js/86.f8f74288.js"><link rel="prefetch" href="/assets/js/87.f619cbb1.js"><link rel="prefetch" href="/assets/js/88.8aafe5a0.js"><link rel="prefetch" href="/assets/js/89.67cd2762.js"><link rel="prefetch" href="/assets/js/9.56fc1daa.js"><link rel="prefetch" href="/assets/js/90.7801dfa2.js"><link rel="prefetch" href="/assets/js/91.bc03075e.js"><link rel="prefetch" href="/assets/js/92.cd7f11c7.js"><link rel="prefetch" href="/assets/js/93.27188503.js"><link rel="prefetch" href="/assets/js/94.0c4b4391.js"><link rel="prefetch" href="/assets/js/95.cd4d517b.js"><link rel="prefetch" href="/assets/js/96.725d56bd.js"><link rel="prefetch" href="/assets/js/97.01d10b42.js"><link rel="prefetch" href="/assets/js/98.3595be8f.js"><link rel="prefetch" href="/assets/js/99.42dfe524.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">莫问今朝</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术板块" class="dropdown-title"><span class="title">技术板块</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术板块" class="mobile-dropdown-title"><span class="title">技术板块</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/coding/database/说明.html" class="nav-link">
+  数据存储
+</a></li><li class="dropdown-item"><!----> <a href="/coding/mq/说明.html" class="nav-link">
+  消息中间件
+</a></li><li class="dropdown-item"><!----> <a href="/coding/devops/说明.html" class="nav-link">
+  Devops
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线文档" class="dropdown-title"><span class="title">在线文档</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线文档" class="mobile-dropdown-title"><span class="title">在线文档</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          前端文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.liantu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JavaScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Java文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  JDK8在线api
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          Spring文档
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  SpringBoot
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="在线工具" class="dropdown-title"><span class="title">在线工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="在线工具" class="mobile-dropdown-title"><span class="title">在线工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tool.oschina.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线工具集合
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.uupoop.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  在线PhotoShop
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github传送门
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/coding/devops/说明.html" class="sidebar-link">说明</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Docker入门系列</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/coding/devops/docker/学习心得.html" class="sidebar-link">学习心得</a></li><li><a href="/coding/devops/docker/Centos7下安装docker.html" class="sidebar-link">Centos7下安装docker</a></li><li><a href="/coding/devops/docker/镜像管理.html" class="sidebar-link">镜像管理</a></li><li><a href="/coding/devops/docker/容器管理.html" class="sidebar-link">容器管理</a></li><li><a href="/coding/devops/docker/docker数据卷管理.html" class="sidebar-link">docker数据卷管理</a></li><li><a href="/coding/devops/docker/搭建LNMP网站平台.html" class="sidebar-link">搭建LNMP网站平台</a></li><li><a href="/coding/devops/docker/网络管理.html" class="sidebar-link">网络管理</a></li><li><a href="/coding/devops/docker/Dockerfile介绍.html" class="sidebar-link">Dockerfile介绍</a></li><li><a href="/coding/devops/docker/私有镜像仓库Harbor.html" class="active sidebar-link">私有镜像仓库Harbor</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#harbor的由来" class="sidebar-link">Harbor的由来</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#准备工作" class="sidebar-link">准备工作</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#安装步骤" class="sidebar-link">安装步骤</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#_1-上传harbor离线包" class="sidebar-link">1.上传harbor离线包</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#_2-安装docker" class="sidebar-link">2.安装docker</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#_3-安装docker-compose" class="sidebar-link">3.安装docker-compose</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#_4-https安全认证" class="sidebar-link">4.https安全认证</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#_5-配置harbor配置文件" class="sidebar-link">5.配置harbor配置文件</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#_6-执行-prepare" class="sidebar-link">6.执行./prepare</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#_7-安装" class="sidebar-link">7.安装</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#本机浏览器验证" class="sidebar-link">本机浏览器验证</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#修改本机hosts文件" class="sidebar-link">修改本机hosts文件</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#浏览器访问harbor后台管理页面" class="sidebar-link">浏览器访问harbor后台管理页面</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#创建一个项目" class="sidebar-link">创建一个项目</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#创建一个用户" class="sidebar-link">创建一个用户</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#为项目指定拥有者-开发者-浏览者" class="sidebar-link">为项目指定拥有者/开发者/浏览者</a></li></ul></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#虚机106上验证" class="sidebar-link">虚机106上验证</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#证书验证" class="sidebar-link">证书验证</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#登录" class="sidebar-link">登录</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#往harbor推送镜像" class="sidebar-link">往harbor推送镜像</a></li><li class="sidebar-sub-header"><a href="/coding/devops/docker/私有镜像仓库Harbor.html#从harbor拉取镜像" class="sidebar-link">从harbor拉取镜像</a></li></ul></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Kubernetes入门系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Jenkins入门系列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CI&amp;CD综合实践</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="私有镜像仓库harbor"><a href="#私有镜像仓库harbor" class="header-anchor">#</a> 私有镜像仓库Harbor</h1> <hr> <h2 id="harbor的由来"><a href="#harbor的由来" class="header-anchor">#</a> Harbor的由来</h2> <p>Habor是由VMWare公司开源的容器镜像仓库。事实上，Habor是在Docker Registry上进行
+了相应的企业级扩展，从而获得了更加广泛的应用，这些新的企业级特性包括：管理用户
+界面，基于角色的访问控制 ，AD/LDAP集成以及审计日志等。</p> <h2 id="准备工作"><a href="#准备工作" class="header-anchor">#</a> 准备工作</h2> <p>我们本次安装harbor以docker-compose的方式部署。<br>
+harbor服务器的最低要求2核4G。<br>
+准备一台新服务器。<br> <img src="/images/docker/harbor1.png" alt=""><br></p> <h2 id="安装步骤"><a href="#安装步骤" class="header-anchor">#</a> 安装步骤</h2> <h3 id="_1-上传harbor离线包"><a href="#_1-上传harbor离线包" class="header-anchor">#</a> 1.上传harbor离线包</h3> <p><a href="https://github.com/goharbor/harbor/releases" target="_blank" rel="noopener noreferrer">harbor安装包下载<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+下载最新稳定的离线包，例如：harbor-offline-installer-v1.7.1.tar<br>
+上传并解压。<br></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host107 ~]# tar zxvf harbor-offline-installer-v1.7.1.tgz 
+[root@host107 harbor]# ll
+total 623364
+-rw-r--r-- 1 root root 638288840 Nov 14 19:23 harbor.v1.7.1.tar.gz
+-rw-r--r-- 1 root root      5805 Nov 14 19:23 harbor.yml
+-rwxr-xr-x 1 root root      5088 Nov 14 19:23 install.sh
+-rw-r--r-- 1 root root     11347 Nov 14 19:23 LICENSE
+-rwxr-xr-x 1 root root      1748 Nov 14 19:23 prepare
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="_2-安装docker"><a href="#_2-安装docker" class="header-anchor">#</a> 2.安装docker</h3> <p><a href="/coding/devops/docker/Centos7%E4%B8%8B%E5%AE%89%E8%A3%85docker">Centos7下安装docker</a><br></p> <h3 id="_3-安装docker-compose"><a href="#_3-安装docker-compose" class="header-anchor">#</a> 3.安装docker-compose</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 下载docker-compose
+[root@host107 ~]# sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+
+# 给文件加权限
+[root@host107 ~]# sudo chmod +x /usr/local/bin/docker-compose
+
+# 创建软连接
+[root@host107 ~]# sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p><a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener noreferrer">docker-compose官方安装<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="_4-https安全认证"><a href="#_4-https安全认证" class="header-anchor">#</a> 4.https安全认证</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 在harbor目录下，创建一个ssl目录，用户存放证书
+[root@host107 harbor]# mkdir ssl
+[root@host107 harbor]# ll
+total 590236
+drwxr-xr-x 3 root root        23 Dec  5 19:04 common
+-rw-r--r-- 1 root root       939 Jan  4  2019 docker-compose.chartmuseum.yml
+-rw-r--r-- 1 root root       975 Jan  4  2019 docker-compose.clair.yml
+-rw-r--r-- 1 root root      1434 Jan  4  2019 docker-compose.notary.yml
+-rw-r--r-- 1 root root      5608 Jan  4  2019 docker-compose.yml
+-rw-r--r-- 1 root root      8033 Jan  4  2019 harbor.cfg
+-rw-r--r-- 1 root root 603562385 Jan  4  2019 harbor.v1.7.1.tar.gz
+-rwxr-xr-x 1 root root      5739 Jan  4  2019 install.sh
+-rw-r--r-- 1 root root     11347 Jan  4  2019 LICENSE
+-rw-r--r-- 1 root root    748160 Jan  4  2019 open_source_license
+-rwxr-xr-x 1 root root     36337 Jan  4  2019 prepare
+
+
+######################################################################
+# 生成ca.crt
+# 我这里就输入了国家名和common name
+[root@host107 harbor]# openssl req \
+&gt;    -newkey rsa:4096 -nodes -sha256 -keyout ca.key \
+&gt;    -x509 -days 365 -out ca.crt
+Generating a 4096 bit RSA private key
+.......++
+............++
+writing new private key to 'ca.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:CN                       
+State or Province Name (full name) []:
+Locality Name (eg, city) [Default City]:
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:zhoudawei
+Email Address []:
+
+######################################################################
+# 生成域名请求的证书
+# 注意：depo.zhoudawei.com 就是我们后面要访问的镜像仓库域名
+[root@host107 ssl]# openssl req \
+&gt; -newkey rsa:4096 -nodes -sha256 -keyout depo.zhoudawei.com.key \
+&gt; -out depo.zhoudawei.com.csr
+.............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................++
+........................................................................................................++
+writing new private key to 'depo.zhoudawei.com.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:CN
+State or Province Name (full name) []:
+Locality Name (eg, city) [Default City]:
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:depo.zhoudawei.com
+Email Address []:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+
+######################################################################
+# 颁发证书
+[root@host107 ssl]# openssl x509 -req -days 365 -in depo.zhoudawei.com.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out depo.zhoudawei.com.crt
+Signature ok
+subject=/C=CN/L=Default City/O=Default Company Ltd/CN=depo.zhoudawei.com
+Getting CA Private Key
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><h3 id="_5-配置harbor配置文件"><a href="#_5-配置harbor配置文件" class="header-anchor">#</a> 5.配置harbor配置文件</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host107 harbor]# vi harbor.cfg 
+############################################################
+# 修改配置文件中的以下key的值
+hostname = depo.zhoudawei.com
+
+ui_url_protocol = https
+
+ssl_cert = ./ssl/depo.zhoudawei.com.crt
+ssl_cert_key = ./ssl/depo.zhoudawei.com.key
+
+harbor_admin_password = 12345
+############################################################
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="_6-执行-prepare"><a href="#_6-执行-prepare" class="header-anchor">#</a> 6.执行./prepare</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host107 harbor]# ./prepare 
+Generated and saved secret to file: /data/secretkey
+Generated configuration file: ./common/config/nginx/nginx.conf
+Generated configuration file: ./common/config/adminserver/env
+Generated configuration file: ./common/config/core/env
+Generated configuration file: ./common/config/registry/config.yml
+Generated configuration file: ./common/config/db/env
+Generated configuration file: ./common/config/jobservice/env
+Generated configuration file: ./common/config/jobservice/config.yml
+Generated configuration file: ./common/config/log/logrotate.conf
+Generated configuration file: ./common/config/registryctl/env
+Generated configuration file: ./common/config/core/app.conf
+Generated certificate, key file: ./common/config/core/private_key.pem, cert file: ./common/config/registry/root.crt
+The configuration files are ready, please use docker-compose to start the service.
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="_7-安装"><a href="#_7-安装" class="header-anchor">#</a> 7.安装</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host107 harbor]# ./install.sh
+# 等待一会
+
+# 安装完后，验证运行
+# 可以看到harbor也是类似微服务部署，各模块单独部署一个docker容器
+[root@host107 harbor]# docker-compose ps
+       Name                     Command                       State                                        Ports                              
+----------------------------------------------------------------------------------------------------------------------------------------------
+harbor-adminserver   /harbor/start.sh                 Up (healthy)                                                                            
+harbor-core          /harbor/start.sh                 Up (healthy)                                                                            
+harbor-db            /entrypoint.sh postgres          Up (healthy)            5432/tcp                                                        
+harbor-jobservice    /harbor/start.sh                 Up                                                                                      
+harbor-log           /bin/sh -c /usr/local/bin/ ...   Up (health: starting)   127.0.0.1:1514-&gt;10514/tcp                                       
+harbor-portal        nginx -g daemon off;             Up (healthy)            80/tcp                                                          
+nginx                nginx -g daemon off;             Up (healthy)            0.0.0.0:443-&gt;443/tcp, 0.0.0.0:4443-&gt;4443/tcp, 0.0.0.0:80-&gt;80/tcp
+redis                docker-entrypoint.sh redis ...   Up                      6379/tcp                                                        
+registry             /entrypoint.sh /etc/regist ...   Up (healthy)            5000/tcp                                                        
+registryctl          /harbor/start.sh                 Up (healthy)   
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h2 id="本机浏览器验证"><a href="#本机浏览器验证" class="header-anchor">#</a> 本机浏览器验证</h2> <h3 id="修改本机hosts文件"><a href="#修改本机hosts文件" class="header-anchor">#</a> 修改本机hosts文件</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 增加
+192.168.163.107 depo.zhoudawei.com
+
+# 如果是在106虚拟机上访问107，同样的也得在106的hosts里面加
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="浏览器访问harbor后台管理页面"><a href="#浏览器访问harbor后台管理页面" class="header-anchor">#</a> 浏览器访问harbor后台管理页面</h3> <p>url:depo.zhoudawei.com<br>
+admin/12345 (配置文件里面已经修改过)<br> <img src="/images/docker/harbor2.png" alt=""><br></p> <h3 id="创建一个项目"><a href="#创建一个项目" class="header-anchor">#</a> 创建一个项目</h3> <p>项目设为私有，保证项目在小范围可见，隔离无关人员的误操作。
+<img src="/images/docker/harbor3.png" alt=""><br></p> <h3 id="创建一个用户"><a href="#创建一个用户" class="header-anchor">#</a> 创建一个用户</h3> <p>daivd/Harbor2019
+<img src="/images/docker/harbor4.png" alt=""><br></p> <h3 id="为项目指定拥有者-开发者-浏览者"><a href="#为项目指定拥有者-开发者-浏览者" class="header-anchor">#</a> 为项目指定拥有者/开发者/浏览者</h3> <p>这里需要注意的是，账号本身只有管理员和非管理角色。<br>
+而在给项目指定用户的同时，又可以为用户指定该项目的权限角色。<br>
+这里我们把david指定为拥有mytest项目开发者的权限。<br> <img src="/images/docker/harbor5.png" alt=""><br></p> <h2 id="虚机106上验证"><a href="#虚机106上验证" class="header-anchor">#</a> 虚机106上验证</h2> <h3 id="证书验证"><a href="#证书验证" class="header-anchor">#</a> 证书验证</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 增加域名解析
+[root@host106 ~]# vi /etc/hosts
+#####################################################
+192.168.163.107 depo.zhoudawei.com
+#####################################################
+
+# 创建证书存放目录
+[root@host106 ~]# mkdir /etc/docker/certs.d/depo.zhoudawei.com -p
+# 复制远端107上的文件,需要输入107主机的登录密码
+[root@host106 ~]# scp root@192.168.163.107:/root/harbor/ssl/depo.zhoudawei.com.crt /etc/docker/certs.d/depo.zhoudawei.com
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="登录"><a href="#登录" class="header-anchor">#</a> 登录</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 输入在harbor后台管理页面上创建的用户/密码
+# 只有登录成功了，在能在登录的主机上往harbor服务上推送镜像和拉取
+[root@host106 ~]# docker login depo.zhoudawei.com
+Username: david
+Password: 
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+# 免交互登录
+$ docker login -udavid -pHarbor2019 depo.zhoudawei.com
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="往harbor推送镜像"><a href="#往harbor推送镜像" class="header-anchor">#</a> 往harbor推送镜像</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@host106 ~]# docker images
+REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
+tomcat                    v1                  f32ac73724b3        27 hours ago        619MB
+mysql                     5.7                 1e4405fe1ea9        12 days ago         437MB
+centos                    7                   5e35e350aded        3 weeks ago         203MB
+busybox                   latest              020584afccce        5 weeks ago         1.22MB
+richarvey/nginx-php-fpm   latest              bb49f1636b1a        2 months ago        444MB
+
+#####################################################################
+# 这里我测试把tomcat:v1推送到仓库
+# depo.zhoudawei.com是仓库的服务器地址
+# mytest是我们创建项目
+# 上面我们登录的账号是拥有mytest项目开发权限的
+
+# 打上tag
+[root@host106 ~]# docker tag tomcat:v1 depo.zhoudawei.com/mytest/tomcat:v1
+
+# 推送到仓库
+[root@host106 ~]# docker push depo.zhoudawei.com/mytest/tomcat:v1
+The push refers to repository [depo.zhoudawei.com/mytest/tomcat]
+95d8651dda44: Pushed 
+52e4fe2ebe7e: Pushed 
+1e55d3f116ba: Pushed 
+77b174a6a187: Pushed 
+v1: digest: sha256:8ecfbd15bf45da9588b9889ca0e59b129a103152fc7292a7eb90d61a6dca6bd7 size: 1161
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p><img src="/images/docker/harbor5.png" alt=""><br>
+我们在后台管理系统也能看到，mytest项目下多了一个镜像。于是，推送镜像成功。</p> <h3 id="从harbor拉取镜像"><a href="#从harbor拉取镜像" class="header-anchor">#</a> 从harbor拉取镜像</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 删除所有tomcat镜像
+[root@host106 ~]# docker images
+REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
+mysql                     5.7                 1e4405fe1ea9        12 days ago         437MB
+centos                    7                   5e35e350aded        3 weeks ago         203MB
+busybox                   latest              020584afccce        5 weeks ago         1.22MB
+richarvey/nginx-php-fpm   latest              bb49f1636b1a        2 months ago        444MB
+
+##############################################################################
+# depo.zhoudawei.com 是我们指定的仓库地址
+# mytest 是指定仓库中的项目
+# tomcat 是镜像名
+# v1 是tag(版本号)
+[root@host106 ~]# docker pull depo.zhoudawei.com/mytest/tomcat:v1
+v1: Pulling from mytest/tomcat
+ab5ef0e58194: Already exists 
+01d11ddfaf1c: Pull complete 
+38618e378a1d: Pull complete 
+a0a42474496b: Pull complete 
+Digest: sha256:8ecfbd15bf45da9588b9889ca0e59b129a103152fc7292a7eb90d61a6dca6bd7
+Status: Downloaded newer image for depo.zhoudawei.com/mytest/tomcat:v1
+depo.zhoudawei.com/mytest/tomcat:v1
+
+# 在查看一下本地镜像，从107仓库上拉取镜像就成功了。
+[root@host106 ~]# docker images
+REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
+depo.zhoudawei.com/mytest/tomcat   v1                  f32ac73724b3        28 hours ago        619MB
+mysql                              5.7                 1e4405fe1ea9        12 days ago         437MB
+centos                             7                   5e35e350aded        3 weeks ago         203MB
+busybox                            latest              020584afccce        5 weeks ago         1.22MB
+richarvey/nginx-php-fpm            latest              bb49f1636b1a        2 months ago        444MB
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">12/5/2019, 8:28:39 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/coding/devops/docker/Dockerfile介绍.html" class="prev">
+        Dockerfile介绍
+      </a></span> <span class="next"><a href="/coding/devops/kubernetes/Kubernetes集群搭建.html">
+        Kubernetes集群搭建
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.48c4d218.js" defer></script><script src="/assets/js/2.0662490d.js" defer></script><script src="/assets/js/42.57d70211.js" defer></script>
+  </body>
+</html>
